@@ -1,22 +1,22 @@
-<!DOCTYPE html>
-<html>
+<?php 
+	include('templates/header.php');
+?>
 
-	<head>
-		<meta charset="utf-8" />
-		<title>Register User</title>
-	</head>
-	
-	<body>	
-		
-		<form method="POST" action="register_confirm.php">
-			<p><label>Name: </label><input type="text" placeholder="Name" name="name" /></p>
-			<p><label>Username: </label><input type="text" placeholder="Username" name="username" /></p>
-			<p><label>Password: </label><input type="password" name="password" /></p>
-			<p><label>Email: </label><input type="email" placeholder="Email" name="email" /></p>
-			
-			<p><input type="submit" value="Register" /></p>
-		</form>
-		
-	</body>
+	<h2> Login now, bithc </h2>
 
-</html>
+
+	<form method="POST" action="database/validate_login.php">
+
+		<p><input type="text" placeholder="username" name="username" /></p>
+		<p><input type="password" placeholder="password" name="password" /></p>
+
+		<p><input type="submit" value="login" /></p>
+
+	</form>
+
+	<a href="register.php"> do not have an acc ? what a shame, create 1 </a>
+
+
+<?php
+	include('templates/footer.php');
+?>
