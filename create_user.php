@@ -1,6 +1,6 @@
 <?php
  
-	include_once('db/connection.php');
+	include_once('database/connection.php');
 	
 	$stmt = $db->prepare('INSERT INTO users VALUES (NULL, :username, :name, :email, :password)');
 	$stmt->bindParam(':username', $_POST['username'], PDO::PARAM_STR);

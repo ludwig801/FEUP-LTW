@@ -1,0 +1,25 @@
+body {
+	width:80%;
+	margin:auto;
+	background-color:black;
+	color:white;
+}
+
+h1 {
+	border: solid red 2px;
+	text-align: center;
+	background-color: grey;
+}
+
+#the-admins {
+	margin: 2em;
+	padding: 2em;
+	border: solid grey 3px;
+	text-align: center;
+}
+
+#the-admins p {
+	font-weight: bold;
+	font-size: 3em;
+	color:pink;
+}

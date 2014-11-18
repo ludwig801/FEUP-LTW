@@ -1,3 +1,3 @@
 <?php 
-	$db = new PDO('sqlite:db/polls.db');
+	$db = new PDO('sqlite:database/polls.db');
 ?>
