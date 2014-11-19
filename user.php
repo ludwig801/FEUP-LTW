@@ -33,7 +33,7 @@
 				<td><?=$row['description']?></td>
 				<td><?=$row['public']?></td>
 				<td><?=$row['user_id']?></td>
-				<td><a href="#">Delete</a>
+				<td><a href="delete_poll.php?id=<?=$row['id']?>">Delete</a>
 			</tr>
 	<?php 	} ?>
 
