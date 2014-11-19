@@ -12,4 +12,7 @@
 <a href="logout.php"> Logout </a>
 
 
+<a href="create_poll.php">Create poll dude </a>
+
+
 <? include('templates/footer.php'); ?>

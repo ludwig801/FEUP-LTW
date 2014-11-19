@@ -7,3 +7,11 @@ CREATE TABLE users (
 );
 
 INSERT INTO users VALUES (NULL, "teste", "teste", "teste_email", "123");
+
+
+CREATE TABLE polls (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	title VARCHAR,
+	description VARCHAR,
+	public BOOLEAN
+);
