@@ -36,7 +36,7 @@
 
 	</form>
 
-	<a href="register.php"> do not have an acc ? what a shame, create 1 </a>
+	<a href="signup.php"> do not have an acc ? what a shame, create 1 </a>
 
 
 <?php
