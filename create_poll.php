@@ -35,6 +35,8 @@
 
 </form>
 
+<p><a href="#"> Add question </a></p>
+
 <p><a href="user.php"> Back </a></p>
 
 

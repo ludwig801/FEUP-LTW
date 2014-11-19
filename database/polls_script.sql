@@ -6,8 +6,7 @@ CREATE TABLE users (
 	password VARCHAR
 );
 
-INSERT INTO users VALUES (NULL, "teste", "teste", "teste_email", "123");
-
+INSERT INTO users VALUES (NULL, "admin", "admin", "admin", "123");
 
 CREATE TABLE polls (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -15,4 +14,10 @@ CREATE TABLE polls (
 	description VARCHAR,
 	public BOOLEAN,
 	user_id INTEGER REFERENCES users(id)
+);
+
+CREATE TABLE questions (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	description VARCHAR,
+	poll_id INTEGER REFERENCES polls(id)
 );
