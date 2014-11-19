@@ -19,7 +19,7 @@
 			$_SESSION['myusername'] = $myusername;
 
 			// Redirect to user page
-			header("location: admin.php");
+			header("location: user.php");
 		} else {
 			echo "Your username and/or password is invalid hehe";
 		}

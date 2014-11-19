@@ -6,7 +6,7 @@
 		isset($_POST['description']) && 
 		isset($_POST['public'])) {
 
-		$stmt = $db->prepare('INSERT INTO polls VALUES (NULL, :title, :description, :public)');
+		$stmt = $db->prepare('INSERT INTO polls VALUES (NULL, :title, :description, :public, 0)');
 		$stmt->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
 		$stmt->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
 		$stmt->bindParam(':public', $_POST['public'], PDO::PARAM_STR);

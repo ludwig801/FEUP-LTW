@@ -13,5 +13,6 @@ CREATE TABLE polls (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	title VARCHAR,
 	description VARCHAR,
-	public BOOLEAN
+	public BOOLEAN,
+	user_id INTEGER REFERENCES users(id)
 );
