@@ -14,6 +14,22 @@ h1 {
 	background-color: grey;
 }
 
+footer {
+   position:fixed;
+   bottom:0px;
+   height:30px;
+   width:inherit;
+   margin:inherit;
+   background:#999;
+   text-align: center;
+   color: white;
+}
+
+table {
+	width:100%;
+	text-align: center;
+}
+
 #the-admins {
 	margin: 2em;
 	padding: 2em;

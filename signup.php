@@ -24,7 +24,10 @@
 			<p><label>Email: </label><input type="email" placeholder="Email" name="email" /></p>
 			
 			<p><input type="submit" value="Register" /></p>
+
 		</form>
+
+		<a href="login.php"> Back </a>
 
 <?php
 	include('templates/footer.php');

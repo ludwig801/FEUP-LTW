@@ -2,17 +2,19 @@
 	
 	include_once('database/connection.php');
 
+	include('lock.php');
+
 	if(isset($_POST['title']) && 
 		isset($_POST['description']) && 
 		isset($_POST['public'])) {
 
-		$stmt = $db->prepare('INSERT INTO polls VALUES (NULL, :title, :description, :public, 0)');
+		$stmt = $db->prepare('INSERT INTO polls VALUES (NULL, :title, :description, :public, :user_id)');
 		$stmt->bindParam(':title', $_POST['title'], PDO::PARAM_STR);
 		$stmt->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
 		$stmt->bindParam(':public', $_POST['public'], PDO::PARAM_STR);
-		
-		$stmt->execute();
+		$stmt->bindParam(':user_id', $_SESSION['myid'], PDO::PARAM_STR);
 
+		$stmt->execute();
 	}
 
 	include('templates/header.php');
