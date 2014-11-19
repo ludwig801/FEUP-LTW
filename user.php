@@ -2,19 +2,16 @@
 	
 	include_once('database/connection.php');
 	include_once('database/polls.php');
+
 	include('lock.php');
+	include('templates/header.php');
 
 	$params = array($db, $_SESSION['myid']);
 	$result = getUserPolls($params);
 
-	include('templates/header.php');
-
 ?>
 
-<h2> Hello, <?=$_SESSION['myusername']; ?>  <?=$_SESSION['myid']; ?> ( <a href="logout.php"> Logout </a> )</h2>
-
-
-
+<h2> Hello, <?=$_SESSION['myusername']; ?> ( <a href="logout.php"> Logout </a> )</h2>
 
 <p><a href="create_poll.php">Create new poll </a></p>
 
@@ -26,6 +23,7 @@
 		<th>Description</th>
 		<th>Public</th>
 		<th>UserID</th>
+		<th></th>
 	</tr>
 
 	<?php foreach($result as $row) { ?>
@@ -35,10 +33,10 @@
 				<td><?=$row['description']?></td>
 				<td><?=$row['public']?></td>
 				<td><?=$row['user_id']?></td>
+				<td><a href="#">Delete</a>
 			</tr>
 	<?php 	} ?>
 
 </table>
-
 
 <? include('templates/footer.php'); ?>

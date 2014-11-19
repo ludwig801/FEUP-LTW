@@ -11,3 +11,9 @@
 		<head>
 			<h1><a href="index.php"> POLLING SYSTEM </a></h1>
 		</head>
+
+		<!-- Show temporary messages -->
+		<?php if(!empty($_SESSION['message'])) { ?>
+			<div class="message"> <?= $_SESSION['message']; ?> </div>
+			<?php unset($_SESSION['message']);
+		} ?>

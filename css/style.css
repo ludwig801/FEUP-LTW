@@ -30,6 +30,14 @@ table {
 	text-align: center;
 }
 
+.message {
+	width: 30%;
+	margin: auto;
+	text-align: center;
+	background-color: #FFFF99;
+	border: solid black 1px;
+}
+
 #the-admins {
 	margin: 2em;
 	padding: 2em;
