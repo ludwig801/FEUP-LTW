@@ -14,6 +14,8 @@
 		
 		$stmt->execute();
 
+		header("location: login.php");
+
 	}
 
 ?>	
