@@ -23,6 +23,7 @@
 		<th>Public</th>
 		<th>UserID</th>
 		<th></th>
+		<th></th>
 	</tr>
 
 	<?php foreach($result as $row) { ?>
@@ -31,7 +32,8 @@
 				<td><?=$row['description']?></td>
 				<td><?=$row['public']?></td>
 				<td><?=$row['user_id']?></td>
-				<td><a href="delete_poll.php?id=<?=$row['id']?>">Delete</a>
+				<td><a href="delete_poll.php?id=<?=$row['id']?>">Delete</a></td>
+				<td><a href="poll_details.php?id=<?=$row['id']?>">Details</a></td>
 			</tr>
 	<?php 	} ?>
 
