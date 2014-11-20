@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" >
 		<link rel="stylesheet" href="css/style.css" >
+		<script src="content/js/scripts.js"></script>
 		<title> Polling System </title>
 	</head>
 

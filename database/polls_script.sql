@@ -10,13 +10,12 @@ INSERT INTO users VALUES (NULL, "admin", "admin", "admin", "123");
 
 CREATE TABLE polls (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	title VARCHAR,
 	description VARCHAR,
 	public BOOLEAN,
 	user_id INTEGER REFERENCES users(id)
 );
 
-CREATE TABLE questions (
+CREATE TABLE answers (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	description VARCHAR,
 	poll_id INTEGER REFERENCES polls(id)

@@ -7,4 +7,11 @@
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+
+	function getLastPollId($db) {
+		$stmt = $db->prepare('SELECT MAX(id) FROM polls');
+		$stmt->execute();
+		$result = $stmt->fetch();
+		return $result['MAX(id)'];
+	}
 ?>

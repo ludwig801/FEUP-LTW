@@ -19,7 +19,6 @@
 	<caption> Your polls </caption>
 	<tr>
 		<th>ID</th>
-		<th>Title</th>
 		<th>Description</th>
 		<th>Public</th>
 		<th>UserID</th>
@@ -29,7 +28,6 @@
 	<?php foreach($result as $row) { ?>
 			<tr>
 				<td><?=$row['id']?></td>
-				<td><?=$row['title']?></td>
 				<td><?=$row['description']?></td>
 				<td><?=$row['public']?></td>
 				<td><?=$row['user_id']?></td>
