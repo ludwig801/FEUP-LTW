@@ -11,7 +11,7 @@ INSERT INTO users VALUES (NULL, "admin", "admin", "admin", "123");
 CREATE TABLE polls (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	description VARCHAR,
-	public BOOLEAN,
+	public INTEGER,
 	user_id INTEGER REFERENCES users(id)
 );
 

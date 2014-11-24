@@ -35,7 +35,7 @@
 
 	<p><input type="text" name="description" placeholder="The question..." /></p>
 
-	<p><input type="radio" name="public" value="true" /> Public <input type="radio" name="public" value="false" /> Private </p>
+	<p><input type="radio" name="public" value="1" /> Public <input type="radio" name="public" value="0" /> Private </p>
 
 	<p><a href="javascript: addAnswer()"> Add answer </a></p>
 

@@ -1,4 +1,10 @@
 <?php
+
+	function getPublicPolls($db) {
+		$stmt = $db->prepare('SELECT * FROM polls WHERE public = 1');
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
 	
 	function getUserPolls($params) {
 		$db = $params[0];
