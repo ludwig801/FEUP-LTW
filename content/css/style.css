@@ -1,4 +1,5 @@
 body {
+	font-family: comic sans ms;
 	width:80%;
 	margin:auto;
 }
@@ -12,6 +13,10 @@ h1 {
 	border: solid red 2px;
 	text-align: center;
 	background-color: grey;
+}
+
+h2 {
+	text-align: right;
 }
 
 footer {

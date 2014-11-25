@@ -24,5 +24,12 @@
 		return $result;
 
 	}
+	
+	function deleteAllPollAnswers($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('DELETE FROM answers WHERE poll_id = :poll_id');
+		$stmt->bindParam(':poll_id', $params['poll_id'], PDO::PARAM_STR);
+		$stmt->execute();
+	}
 
 ?>

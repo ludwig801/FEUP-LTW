@@ -7,7 +7,7 @@ function addAnswer() {
 	var ans = answerDiv.firstElementChild;
 
 	while(ans) {
-		id++;
+		if(ans.innerHTML != undefined) 	id++;
 		ans = ans.nextSibling;
 	}
 
