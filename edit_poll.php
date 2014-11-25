@@ -6,11 +6,18 @@
 
 	include('templates/header.php');
 	
-	if(isset($_POST['description']) && isset($_POST['public']) && isset($_POST['id']) && isset($_POST['poll_id'])) {
+	if(isset($_POST['description']) && isset($_POST['public']) && isset($_POST['id']) && isset($_POST['poll_id']) && isset($_POST['answer'])) {
 	
 		$params = ['db' => $db, 'id' => $_POST['id'], 'description' => $_POST['description'], 'public' => $_POST['public'], 'poll_id' => $_POST['poll_id']];
 		editPoll($params);
 		deleteAllPollAnswers($params);
+		
+		foreach($_POST['answer'] as $ans) {
+			$poll_id = getLastPollId($db);
+			$vars = ['db' => $db, 'description' => $ans, 'poll_id' => $poll_id];
+			addAnswer($vars);
+		}
+	
 		$_SESSION['message'] = "Poll successfully edited.";
 		
 		header("location: user.php");
