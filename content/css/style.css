@@ -1,24 +1,26 @@
-* {
-	/* border: 1px solid; */
-}
-
 body {
-	font-family: comic sans ms;
-	width: 65%;
+	font-family: sans-serif;
+	width: 55%;
 	margin: auto;
-	margin-top: 4em;
+	margin-top: 6em;
 }
 
+/* Header */ 
 header {
    position:fixed;
    top:0px;
    height:5em;
-   width:65%;
+   width:inherit;
    margin:auto;
    background:#999;
    text-align: center;
 }
 
+	header h1 {
+		margin-top: 0.5em;
+	}
+	
+/* Footer */
 footer {
    position:fixed;
    bottom:0px;
@@ -30,26 +32,31 @@ footer {
    color: white;
 }
 
+/* Anchors */
 a {
 	text-decoration: none;
 	color: black;
 }
 
+/* Header 1 */
 h1 {
 	/* border: solid red 2px; */
 	text-align: center;
 	background-color: #999;
 }
 
+/* Header 2 */
 h2 {
 	text-align: right;
 }
 
+/* Table */
 table {
 	width:100%;
 	text-align: center;
 }
 
+/* id[message] */
 .message {
 	width: 30%;
 	margin: auto;
@@ -58,6 +65,7 @@ table {
 	border: solid black 1px;
 }
 
+/* ! Admin page only ! */
 #the-admins {
 	margin: 2em;
 	padding: 2em;
