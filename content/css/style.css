@@ -1,22 +1,22 @@
+* {
+	/* border: 1px solid; */
+}
+
 body {
 	font-family: comic sans ms;
-	width:80%;
-	margin:auto;
+	width: 65%;
+	margin: auto;
+	margin-top: 4em;
 }
 
-a {
-	text-decoration: none;
-	color: black;
-}
-
-h1 {
-	border: solid red 2px;
-	text-align: center;
-	background-color: grey;
-}
-
-h2 {
-	text-align: right;
+header {
+   position:fixed;
+   top:0px;
+   height:5em;
+   width:65%;
+   margin:auto;
+   background:#999;
+   text-align: center;
 }
 
 footer {
@@ -28,6 +28,21 @@ footer {
    background:#999;
    text-align: center;
    color: white;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+h1 {
+	/* border: solid red 2px; */
+	text-align: center;
+	background-color: #999;
+}
+
+h2 {
+	text-align: right;
 }
 
 table {
