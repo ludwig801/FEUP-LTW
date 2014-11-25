@@ -3,9 +3,10 @@
 	session_start();
 	
 	include_once('database/connection.php');
-	$stmt = $db->prepare('DELETE FROM polls WHERE id = :id');
-	$stmt->bindParam(':id', $_GET['id'], PDO::PARAM_STR);
-	$stmt->execute();
+	include_once('database/polls.php');
+	
+	$params = ['db' => $db, 'id' => $_GET['id']];
+	deletePoll($params);
 
 	$_SESSION['message'] = "Poll deleted successfully.";
 
