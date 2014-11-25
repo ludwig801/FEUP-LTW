@@ -20,3 +20,11 @@ function addAnswer() {
 
 }
 
+function confirmDelete(id) {
+    var r = confirm("Are you sure?");
+    if (r == true) {
+		window.location = 'delete_poll.php?id=' + id;
+    } else {
+        return;
+    }
+}

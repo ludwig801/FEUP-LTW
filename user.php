@@ -25,6 +25,7 @@
 		<th></th>
 		<th></th>
 		<th></th>
+		<th></th>
 	</tr>
 
 	<?php foreach($result as $row) { ?>
@@ -35,7 +36,7 @@
 				<td><?=$row['user_id']?></td>
 				<td><a href="results.php?id=<?=$row['id']?>">Show Answers</a></td>
 				<td><a href="edit_poll.php?id=<?=$row['id']?>">Edit</a></td>
-				<td><a href="delete_poll.php?id=<?=$row['id']?>">Delete</a></td>
+				<td><a href="javascript: confirmDelete(<?=$row['id']?>);">Delete</a></td>
 				<td><a href="poll_details.php?id=<?=$row['id']?>">Details</a></td>
 			</tr>
 	<?php 	} ?>
