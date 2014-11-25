@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" >
 		<link rel="stylesheet" href="css/style.css" >
+		<link rel="shortcut icon" type="image/x-icon" href="content/images/polls_icon_other.ico">
 		<script src="content/js/scripts.js"></script>
 		<title> Polling System </title>
 	</head>

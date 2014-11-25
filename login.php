@@ -40,7 +40,7 @@
 
 	</form>
 
-	<a href="signup.php"> > If you don't have an account, click here to create one. </a>
+	<a href="signup.php"> <input type="button" value="Create an account" /> </a>
 
 
 <?php

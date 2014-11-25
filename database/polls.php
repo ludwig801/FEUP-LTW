@@ -28,4 +28,14 @@
 		$stmt->execute();
 		return $stmt->fetch();
 	}
+	
+	function editPoll($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('UPDATE polls SET description = :description, public = :public WHERE id = :id');
+		$stmt->bindParam(':id', $params['id'], PDO::PARAM_STR);
+		$stmt->bindParam(':description', $params['description'], PDO::PARAM_STR);
+		$stmt->bindParam(':public', $params['public'], PDO::PARAM_STR);
+		$stmt->execute();
+	}
+	
 ?>
