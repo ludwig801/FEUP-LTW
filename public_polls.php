@@ -8,6 +8,13 @@
 	
 ?>
 
+<form method="GET" action="public_polls.php">
+
+	<input type="text" placeholder="Search poll..." name="query" />
+	<input type="submit" value="Search" />
+	
+</form>
+
 <table border="1">
 	<caption> Public Polls </caption>
 	<tr>

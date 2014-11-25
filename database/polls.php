@@ -38,4 +38,11 @@
 		$stmt->execute();
 	}
 	
+	function deletePoll($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('DELETE FROM polls WHERE id = :id');
+		$stmt->bindParam(':id', $params['id'], PDO::PARAM_STR);
+		$stmt->execute();
+	}
+	
 ?>

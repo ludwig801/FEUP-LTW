@@ -10,9 +10,9 @@
 
 	<body>
 
-		<head>
+		<header>
 			<h1><a href="index.php"> POLLING SYSTEM </a></h1>
-		</head>
+		</header>
 
 		<!-- Show temporary messages -->
 		<?php if(!empty($_SESSION['message'])) { ?>
