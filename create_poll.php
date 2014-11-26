@@ -3,6 +3,9 @@
 	include_once('database/connection.php');
 	include_once('database/answers.php');
 	include_once('database/polls.php');
+	
+	include('upload.php');
+	
 	include('lock.php');
 
 	include('templates/header.php');
@@ -31,7 +34,7 @@
 
 ?>
 
-<form method="POST" action="">
+<form method="post" action="" enctype="multipart/form-data">
 
 	<p><input type="text" name="description" placeholder="The question..." /></p>
 
@@ -41,8 +44,10 @@
 
 	<div id="answers">
 	</div>
+	
+	<p><input type="file" name="image" id="image" title="No file selected" ></p>
 
-	<input type="submit" value="Save" />
+	<p><input type="submit" value="Save" name="submit" /></p>
 
 </form>
 

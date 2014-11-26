@@ -29,6 +29,14 @@
 		return $stmt->fetch();
 	}
 	
+	function getPollsByDescription($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('SELECT * FROM polls WHERE description = :description AND public = 1');
+		$stmt->bindParam(':description', $params['description'], PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+	
 	function editPoll($params) {
 		$db = $params['db'];
 		$stmt = $db->prepare('UPDATE polls SET description = :description, public = :public WHERE id = :id');

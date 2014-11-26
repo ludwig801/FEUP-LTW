@@ -4,8 +4,13 @@
 	
 	include('templates/header.php');
 	
-	$result = getPublicPolls($db);
-	
+	if(isset($_GET['query'])) {
+		$params = ['db' => $db, 'description' => $_GET['query']];
+		$result = getPollsByDescription($params);
+	} else {
+		$result = getPublicPolls($db);
+	}
+
 ?>
 
 <form method="GET" action="public_polls.php">
