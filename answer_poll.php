@@ -7,16 +7,24 @@
 	include('lock.php');
 	include('templates/header.php');
 
-	if(isset($_POST['answer']) && isset($_POST['id'])) {
-	
+
+	if(isset($_POST['answer']) && isset($_POST['id'])) {	
 		$params = ['db' => $db, 'user_id' => $_SESSION['myid'], 'poll_id' => $_POST['id'], 'answer_id' => $_POST['answer']];
 		addPollAnswer($params);
 		header("location: user.php");
-		
 	}
 	
 	if(isset($_GET['id'])) {
-		$params = ['db' => $db, 'id' => $_GET['id']];
+	
+		
+		$params = ['db' => $db, 'user_id' => $_SESSION['myid'], 'id' => $_GET['id']];
+		$check = checkIfUserAnswered($params);
+
+		if($check) {
+			$_SESSION['message'] = "You've already answered to this poll. Thanks.";
+			header("location: results.php?" . $_SERVER['QUERY_STRING']);
+		}
+	
 		$result = getPollById($params);
 		$answers = getPollAnswers($params);
 	}

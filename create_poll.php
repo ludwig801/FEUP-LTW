@@ -53,4 +53,6 @@
 
 <p><a href="user.php"> Back </a></p>
 
+<? include('templates/footer.php'); ?>
+
 
