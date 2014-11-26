@@ -4,54 +4,51 @@
 	include_once('database/answers.php');
 	include_once('database/polls.php');
 	
-	include('upload.php');
-	
 	include('lock.php');
+	include('upload.php');
 
-	include('templates/header.php');
 
 	if(isset($_POST['description']) && 
 		isset($_POST['public']) &&
 		isset($_POST['answer'])) {
-
-		$stmt = $db->prepare('INSERT INTO polls VALUES (NULL, :description, :public, :user_id)');
-		$stmt->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
-		$stmt->bindParam(':public', $_POST['public'], PDO::PARAM_STR);
-		$stmt->bindParam(':user_id', $_SESSION['myid'], PDO::PARAM_STR);
-
-		$stmt->execute();
-
+		
+		$pollParams = array('db' => $db, 'description' => $_POST['description'], 'public' => $_POST['public'], 'myid' => $_SESSION['myid']);
+		addPoll($pollParams);
+		
 		foreach($_POST['answer'] as $ans) {
 			$poll_id = getLastPollId($db);
-			$params = ['db' => $db, 'description' => $ans, 'poll_id' => $poll_id];
-			addAnswer($params);
+			$ansParams = array('db' => $db, 'description' => $ans, 'poll_id' => $poll_id);
+			addAnswer($ansParams);
 		}
 
 		$_SESSION['message'] = "Poll successfully created.";
 
 		header("location: user.php");
 	}
+	
+	include('templates/header.php');
 
 ?>
 
+<p><a href="user.php"> Cancel </a></p>
+
 <form method="post" action="" enctype="multipart/form-data">
+	<fieldset>
+		<p><input type="text" name="description" placeholder="The question..." /></p>
 
-	<p><input type="text" name="description" placeholder="The question..." /></p>
+		<p><input type="radio" name="public" value="1" /> Public <input type="radio" name="public" value="0" /> Private </p>
 
-	<p><input type="radio" name="public" value="1" /> Public <input type="radio" name="public" value="0" /> Private </p>
+		<p><a href="javascript: addAnswer()"><input type="button" value="Add answer"></a></p>
 
-	<p><a href="javascript: addAnswer()"> Add answer </a></p>
+		<div id="answers">
+		</div>
+		
+		<p><input type="file" name="image" id="image" title="No file selected" ></p>
 
-	<div id="answers">
-	</div>
-	
-	<p><input type="file" name="image" id="image" title="No file selected" ></p>
-
-	<p><input type="submit" value="Save" name="submit" /></p>
-
+		<p><input type="submit" value="Save" name="submit" /></p>
+	</fieldset>
 </form>
 
-<p><a href="user.php"> Back </a></p>
 
 <? include('templates/footer.php'); ?>
 

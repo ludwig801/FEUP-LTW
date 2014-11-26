@@ -37,6 +37,17 @@
 		return $stmt->fetchAll();
 	}
 	
+	function addPoll($params) {
+		
+		$db = $params['db'];
+		$stmt = $db->prepare('INSERT INTO polls VALUES (NULL, :description, :public, :user_id)');
+		$stmt->bindParam(':description', $params['description'], PDO::PARAM_STR);
+		$stmt->bindParam(':public', $params['public'], PDO::PARAM_STR);
+		$stmt->bindParam(':user_id', $params['myid'], PDO::PARAM_STR);
+
+		$stmt->execute();
+	}
+	
 	function editPoll($params) {
 		$db = $params['db'];
 		$stmt = $db->prepare('UPDATE polls SET description = :description, public = :public WHERE id = :id');

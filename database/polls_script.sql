@@ -12,7 +12,8 @@ CREATE TABLE polls (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	description VARCHAR,
 	public INTEGER,
-	user_id INTEGER REFERENCES users(id)
+	user_id INTEGER REFERENCES users(id),
+	image VARCHAR
 );
 
 CREATE TABLE answers (
