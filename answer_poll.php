@@ -2,23 +2,15 @@
 	include_once('database/connection.php');
 	include_once('database/polls.php');
 	include_once('database/answers.php');
+	include_once('database/poll_answers.php');
 	
 	include('lock.php');
 	include('templates/header.php');
 
 	if(isset($_POST['answer']) && isset($_POST['id'])) {
 	
-		echo $_POST['answer'];
-		echo $_POST['id'];
-		echo $_SESSION['myid'];
-	
-		$stmt = $db->prepare('INSERT INTO poll_answers VALUES (NULL, :user_id, :poll_id, :answer_id)');
-		$stmt->bindParam(':user_id', $_SESSION['myid'], PDO::PARAM_STR);
-		$stmt->bindParam(':poll_id', $_POST['id'], PDO::PARAM_STR);
-		$stmt->bindParam(':answer_id', $_POST['answer'], PDO::PARAM_STR);
-
-		$stmt->execute();
-		
+		$params = ['db' => $db, 'user_id' => $_SESSION['myid'], 'poll_id' => $_POST['id'], 'answer_id' => $_POST['answer']];
+		addPollAnswer($params);
 		header("location: user.php");
 		
 	}
@@ -39,7 +31,7 @@
 <form method="POST" action="answer_poll.php">
 
 	<?php foreach($answers as $row) { ?>
-		<p><?= $row['description'] ?></p><input type="radio" value="<?=$row['id']?>" name="answer"/>
+		<label><p><?= $row['description'] ?><input type="radio" value="<?=$row['id']?>" name="answer"/></p></label>
 	<?php } ?>
 	
 	<input type="hidden" value="<?=$_GET['id']?>" name="id" />
