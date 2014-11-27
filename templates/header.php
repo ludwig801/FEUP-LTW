@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8" >
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="content/css/style.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="content/css/style.css">
 		<link rel="shortcut icon" type="image/x-icon" href="content/images/polls_icon_other.ico">
 		
 		<script src="content/js/scripts.js"></script>
@@ -16,9 +16,7 @@
 	
 		<div class="container">
 
-			<header>
-				<h1><a href="index.php"> POLLING SYSTEM </a></h1>
-			</header>
+			<header></header>
 
 			<!-- Show temporary messages -->
 			<?php if(!empty($_SESSION['message'])) { ?>

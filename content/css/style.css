@@ -1,9 +1,14 @@
 body {
+	margin-top: 5em;
+	background-color: #eee;
 }
 
 .form-signin {
-	width: 30%;
+	width: 40%;
 	margin: auto;
+	background-color: white;
+	padding: 2em;
+	box-shadow: 5px 5px 9px black;
 }
 
 .form-signin input[type="text"] {
@@ -25,4 +30,20 @@ body {
 	text-align: center;
 	background-color: #FFFF99;
 	border: solid black 1px;
+}
+
+footer {
+	background-color: grey;
+	color: white;
+	height: 2.5em;
+	text-align:center;
+	width: 40%;
+	margin-right: 30%;
+	margin-left: 30%;
+	bottom: 0;
+	position: fixed;
+}
+
+footer p {
+	margin-top: 0.5em;
 }
