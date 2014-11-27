@@ -2,6 +2,7 @@ body {
 	background-color: #eee;
 }
 
+/* SIGN IN */
 .form-signin {
 	margin: auto;
 	margin-top: 5em;
@@ -29,6 +30,40 @@ body {
 }
 
 .form-signin label {
+	font-size: 10px;
+	font-weight: 100;
+}
+
+
+/* CREATE POLL */
+
+.form-create-poll {
+	margin: auto;
+	margin-top: 5em;
+	width: 80%;
+	background-color: white;
+	padding: 2em;
+	box-shadow: 5px 5px 9px black;
+}
+
+.form-create-poll input[type="text"] {
+	margin-bottom: 0.5em;
+}
+
+.form-create-poll  input[type="email"] {
+	margin-bottom: 0.5em;
+}
+
+.form-create-poll  input[type="radio"] {
+	margin-bottom: 0.5em;
+}
+
+.form-create-poll  input[type="submit"] {
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.form-create-poll label {
 	font-size: 10px;
 	font-weight: 100;
 }

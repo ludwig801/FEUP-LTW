@@ -27,25 +27,33 @@
 	}
 	
 	include('templates/header.php');
+	include('templates/navbar.php');
 
 ?>
 
-<p><a href="user.php"> Cancel </a></p>
-
-<form method="post" action="" enctype="multipart/form-data">
+<form class="form-create-poll" role="form" method="post" action="" enctype="multipart/form-data">
 	<fieldset>
-		<p><input type="text" name="description" placeholder="The question..." /></p>
+	
+		<label for="inputDescription">Question</label>
+		<input id="inputDescription" type="text" name="description" placeholder="Insert the question..." class="form-control"/>
 
-		<p><input type="radio" name="public" value="1" /> Public <input type="radio" name="public" value="0" /> Private </p>
+		<label>
+			<input type="radio" name="public" value="1"/> Public 
+		</label>
+		<label>
+			<input type="radio" name="public" value="0"/> Private
+		</label>
 
-		<p><a href="javascript: addAnswer()"><input type="button" value="Add answer"></a></p>
+		<p><a href="javascript: addAnswer()"><input type="button" class="btn btn-default" value="Add answer"></a></p>
 
 		<div id="answers">
 		</div>
 		
 		<!--<p><input type="file" name="image" id="image" title="No file selected" ></p>-->
 
-		<p><input type="submit" value="Save" name="submit" /></p>
+		<input type="submit" value="Save" name="submit" class="btn btn-lg btn-primary"/>
+		<a href="user.php"><input type="submit" value="Cancel" class="btn btn-lg btn-primary"></a>
+		
 	</fieldset>
 </form>
 
