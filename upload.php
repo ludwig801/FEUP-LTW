@@ -33,13 +33,13 @@
 		}
 		
 		if($success == 0) {
-			header("location: signup.php");
+			header("location: create_poll.php");
 		} else {
 			if(move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
 				$_SESSION['message'] = "File uploaded.";
 			} else {
 				$_SESSION['message'] = "File upload failed.";
-				header("location: signup.php");
+				header("location: create_poll.php");
 			}
 		}
 	

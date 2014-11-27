@@ -5,7 +5,7 @@
 	include_once('database/polls.php');
 	
 	include('lock.php');
-	include('upload.php');
+	// include('upload.php');
 
 
 	if(isset($_POST['description']) && 
@@ -43,7 +43,7 @@
 		<div id="answers">
 		</div>
 		
-		<p><input type="file" name="image" id="image" title="No file selected" ></p>
+		<!--<p><input type="file" name="image" id="image" title="No file selected" ></p>-->
 
 		<p><input type="submit" value="Save" name="submit" /></p>
 	</fieldset>

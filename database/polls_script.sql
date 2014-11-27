@@ -13,7 +13,8 @@ CREATE TABLE polls (
 	description VARCHAR,
 	public INTEGER,
 	user_id INTEGER REFERENCES users(id),
-	image VARCHAR
+	image VARCHAR,
+	number_of_answers INTEGER
 );
 
 CREATE TABLE answers (

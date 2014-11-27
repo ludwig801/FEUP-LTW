@@ -22,6 +22,6 @@
 
 			<!-- Show temporary messages -->
 			<?php if(!empty($_SESSION['message'])) { ?>
-				<div class="message"> <?= $_SESSION['message']; ?> </div>
+				<div class='alert alert-success' role='alert'> <?= $_SESSION['message']; ?> </div>
 				<?php unset($_SESSION['message']);
 			} ?>

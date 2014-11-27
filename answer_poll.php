@@ -11,6 +11,7 @@
 	if(isset($_POST['answer']) && isset($_POST['id'])) {	
 		$params = ['db' => $db, 'user_id' => $_SESSION['myid'], 'poll_id' => $_POST['id'], 'answer_id' => $_POST['answer']];
 		addPollAnswer($params);
+		incrementNumberOfAnswers($params);
 		header("location: user.php");
 	}
 	

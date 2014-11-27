@@ -40,7 +40,7 @@
 	function addPoll($params) {
 		
 		$db = $params['db'];
-		$stmt = $db->prepare('INSERT INTO polls VALUES (NULL, :description, :public, :user_id)');
+		$stmt = $db->prepare('INSERT INTO polls VALUES (NULL, :description, :public, :user_id, "", 0)');
 		$stmt->bindParam(':description', $params['description'], PDO::PARAM_STR);
 		$stmt->bindParam(':public', $params['public'], PDO::PARAM_STR);
 		$stmt->bindParam(':user_id', $params['myid'], PDO::PARAM_STR);
@@ -61,6 +61,13 @@
 		$db = $params['db'];
 		$stmt = $db->prepare('DELETE FROM polls WHERE id = :id');
 		$stmt->bindParam(':id', $params['id'], PDO::PARAM_STR);
+		$stmt->execute();
+	}
+	
+	function incrementNumberOfAnswers($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('UPDATE polls SET number_of_answers = number_of_answers + 1 WHERE id = :id');
+		$stmt->bindParam(':id', $params['poll_id'], PDO::PARAM_STR);
 		$stmt->execute();
 	}
 	
