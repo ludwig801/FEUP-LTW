@@ -49,4 +49,4 @@
 </form>
 
 
-<? include('templates/footer.php'); ?>
+<?php include('templates/footer.php'); ?>

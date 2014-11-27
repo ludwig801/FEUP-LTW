@@ -1,21 +1,30 @@
 <?php 
 
 	include_once('database/connection.php');
+	include_once('database/users.php');
+	
 	include('templates/header.php');
 
 	// If required field are filled
 	if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirmPassword'])) {
 	
 		if($_POST['password'] == $_POST['confirmPassword']) {
-			$stmt = $db->prepare('INSERT INTO users VALUES (NULL, :username, :name, :email, :password)');
-			$stmt->bindParam(':username', $_POST['username'], PDO::PARAM_STR);
-			$stmt->bindParam(':name', $_POST['name'], PDO::PARAM_STR);
-			$stmt->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
-			$stmt->bindParam(':password', $_POST['password'], PDO::PARAM_STR);
+		
+			$params = array('db' => $db, 'username' => $_POST['username']);
+			$tmpUsers = getUserByUsername($params);
 			
-			$stmt->execute();
+			if(count($tmpUsers) == 0) {
+			
+				$stmt = $db->prepare('INSERT INTO users VALUES (NULL, :username, :name, :email, :password)');
+				$stmt->bindParam(':username', $_POST['username'], PDO::PARAM_STR);
+				$stmt->bindParam(':name', $_POST['name'], PDO::PARAM_STR);
+				$stmt->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
+				$stmt->bindParam(':password', $_POST['password'], PDO::PARAM_STR);
+				
+				$stmt->execute();
 
-			header("location: signin.php");
+				header("location: signin.php");
+			}
 		} 
 	}
 
@@ -47,6 +56,4 @@
 
 		
 
-<?php
-	include('templates/footer.php');
-?>
+<?php include('templates/footer.php'); ?>

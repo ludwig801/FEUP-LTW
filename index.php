@@ -8,4 +8,4 @@
 <h2> Olá ;) </h2>
 
 
-<? include('templates/footer.php'); ?>
+<?php include('templates/footer.php'); ?>
