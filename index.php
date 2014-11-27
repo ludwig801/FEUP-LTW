@@ -7,5 +7,7 @@
 
 <h2> Olá ;) </h2>
 
+<?php header("location: signin.php"); ?>
+
 
 <?php include('templates/footer.php'); ?>
