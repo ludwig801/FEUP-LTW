@@ -13,7 +13,7 @@
 	$count = count($result);
 
 	if($count != 1) {
-		header("location: login.php");
+		header("location: signin.php");
 	} 
 
 ?>

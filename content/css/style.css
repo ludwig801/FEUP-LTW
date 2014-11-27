@@ -1,59 +1,21 @@
 body {
-	font-family: sans-serif;
-	width: 55%;
+}
+
+.form-signin {
+	width: 30%;
 	margin: auto;
-	margin-top: 6em;
 }
 
-/* Header */ 
-header {
-   position:fixed;
-   top:0px;
-   height:5em;
-   width:inherit;
-   margin:auto;
-   background:#999;
-   text-align: center;
+.form-signin input[type="text"] {
+	margin-bottom: 0.3em;
 }
 
-	header h1 {
-		margin-top: 0.5em;
-	}
-	
-/* Footer */
-footer {
-   position:fixed;
-   bottom:0px;
-   height:30px;
-   width:inherit;
-   margin:inherit;
-   background:#999;
-   text-align: center;
-   color: white;
+.form-signin input[type="password"] {
+	margin-bottom: 0.7em;
 }
 
-/* Anchors */
-a {
-	text-decoration: none;
-	color: black;
-}
-
-/* Header 1 */
-h1 {
-	/* border: solid red 2px; */
-	text-align: center;
-	background-color: #999;
-}
-
-/* Header 2 */
-h2 {
-	text-align: right;
-}
-
-/* Table */
-table {
-	width:100%;
-	text-align: center;
+.form-signin input[type="submit"] {
+	margin-bottom: 1.5em;
 }
 
 /* id[message] */
@@ -63,18 +25,4 @@ table {
 	text-align: center;
 	background-color: #FFFF99;
 	border: solid black 1px;
-}
-
-/* ! Admin page only ! */
-#the-admins {
-	margin: 2em;
-	padding: 2em;
-	border: solid grey 3px;
-	text-align: center;
-}
-
-#the-admins p {
-	font-weight: bold;
-	font-size: 3em;
-	color:pink;
 }
