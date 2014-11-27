@@ -30,7 +30,7 @@
 
 	<form class="form-signin" role="form" method="POST" action="">
 		<fieldset>
-			<h2 class="form-signin-heading"> Welcome, </h2>
+			<h2 class="form-signin-heading"> Welcome </h2>
 			
 			<label for="inputUser" class="sr-only">Username</label>
 			<input id="inputUser" type="text" placeholder="Username" name="username" class="form-control" required autofocus/>

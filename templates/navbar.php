@@ -13,7 +13,7 @@
 	  
 		<ul class="nav navbar-nav">
 			<li><a href="create_poll.php">Create Poll</a></li>
-			<li><a href="create_poll.php">Public Polls</a></li>
+			<li><a href="public_polls.php">Public Polls</a></li>
 		</ul>
 			  
 		<ul class="nav navbar-nav navbar-right">
@@ -25,9 +25,9 @@
 				<li><a href="#">My Friends</a></li>
 				<li class="divider"></li>
 				<li><a href="#">Settings</a></li>
+				<li><a href="logout.php">Logout</a></li>
 			  </ul>
 			</li>
-			<li><a class="close" href="logout.php" title="Logout">&times;</a></li>
 		 </ul>
 		 
 		<form method="GET" action="user.php" class="navbar-form navbar-right" role="search">
