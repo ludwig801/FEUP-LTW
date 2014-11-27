@@ -36,7 +36,9 @@
 			<p>Create your personal account</p>
 		
 			<label for="inputUsername">Username</label>
-			<input id="inputUsername" type="text" placeholder="Pick a username..." name="username" class="form-control" required autofocus>
+			<input id="inputUsername" type="text" placeholder="Pick a username..." name="username" class="form-control" required autofocus
+				title="Username must contain between 8 and 16 characters, including upper/lowercase, numbers and '_' symbols"
+				pattern="\w{8,16}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');">
 			
 			<label for="inputName">Name</label>
 			<input id="inputName" type="text" placeholder="Insert your name..." name="name" class="form-control" required>
@@ -45,7 +47,9 @@
 			<input id="inputEmail" type="email" placeholder="Insert your email..." name="email" class="form-control" required>
 			
 			<label for="inputPassword">Password</label>
-			<input id="inputPassword" type="password" placeholder="Choose a password..." name="password" class="form-control" required>
+			<input id="inputPassword" type="password" placeholder="Choose a password..." name="password" class="form-control" required
+				title="Password must contain between 8 and 16 characters, including upper/lowercase, numbers and '_' symbols"
+				pattern="\w{8,16}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');">
 			
 			<label for="inputConfirmPassword">Confirm Password</label>
 			<input id="inputConfirmPassword" type="password" placeholder="Confirm your password..." name="confirmPassword" class="form-control" required>
