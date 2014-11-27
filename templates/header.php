@@ -9,7 +9,7 @@
 		
 		<script src="content/js/scripts.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-		<title> Polling System </title>
+		<title> POLL </title>
 	</head>
 
 	<body>
