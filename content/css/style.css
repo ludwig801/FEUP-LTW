@@ -1,11 +1,11 @@
 body {
-	margin-top: 5em;
 	background-color: #eee;
 }
 
 .form-signin {
-	width: 40%;
 	margin: auto;
+	margin-top: 5em;
+	width: 40%;
 	background-color: white;
 	padding: 2em;
 	box-shadow: 5px 5px 9px black;
@@ -56,4 +56,14 @@ footer {
 
 footer p {
 	margin-top: 0.5em;
+}
+
+
+
+#hsearch  {
+    background:transparent url("../images/search.png") no-repeat scroll left center;
+    margin:0;
+    max-width:230px;
+    padding-left:16px;
+	text-indent: 20px;
 }

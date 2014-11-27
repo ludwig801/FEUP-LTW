@@ -5,13 +5,12 @@
 
 	include('lock.php');
 	include('templates/header.php');
+	include('templates/navbar.php');
 
 	$params = array($db, $_SESSION['myid']);
 	$result = getUserPolls($params);
 
 ?>
-
-<h2> Hello, <?=$_SESSION['myusername']; ?> ( <a href="logout.php"> Logout </a> )</h2>
 
 <p><a href="create_poll.php">Create new poll </a></p>
 

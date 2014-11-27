@@ -17,6 +17,7 @@
 
 			$_SESSION['myusername'] = $myusername;
 			$_SESSION['myid'] = $result['id'];
+			$_SESSION['myname'] = $result['name'];
 
 			// Redirect to user page
 			header("location: user.php");
