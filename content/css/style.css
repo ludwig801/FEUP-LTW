@@ -77,6 +77,22 @@ body {
 	border: solid black 1px;
 }
 
+/* Search box */
+#hsearch  {
+    background:transparent url("../images/search.png") no-repeat scroll left center;
+    margin:0;
+    max-width:230px;
+    padding-left:16px;
+	text-indent: 20px;
+}
+
+/* Errors messages (paragraph) */
+p.error {
+	font-size: 10px;
+	color: red;
+}
+
+/* Footer */
 footer {
 	background-color: grey;
 	color: white;
@@ -91,16 +107,4 @@ footer {
 
 footer p {
 	margin-top: 0.5em;
-}
-
-#hsearch  {
-    background:transparent url("../images/search.png") no-repeat scroll left center;
-    margin:0;
-    max-width:230px;
-    padding-left:16px;
-	text-indent: 20px;
-}
-
-p.error {
-	color: red;
 }

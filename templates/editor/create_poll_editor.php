@@ -10,6 +10,7 @@
 		<!-- Description -->
 		<label for="inputDescription">Question</label>
 		<input id="inputDescription" type="text" name="description" placeholder="Insert the question..." class="form-control" 
+				value="<?php if(isset($_POST['description'])) { echo $_POST['description']; } ?>"
 				title="Description must contain between 3 and 20 characters, including upper/lowercase, numbers and '_' symbol"
 				pattern="\w{3,20}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" required autofocus />
 
@@ -30,7 +31,7 @@
 
 		<!-- Submit -->
 		<input type="submit" value="Save" name="submit" class="btn btn-lg btn-primary"/>
-		<a href="user.php"><input type="submit" value="Cancel" class="btn btn-lg btn-primary"></a>
+		<a href="user.php"><input type="button" value="Cancel" class="btn btn-lg btn-primary"></a>
 		
 	</fieldset>
 </form>
