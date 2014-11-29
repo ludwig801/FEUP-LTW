@@ -35,7 +35,7 @@
 	<fieldset>
 	
 		<label for="inputDescription">Question</label>
-		<input id="inputDescription" type="text" name="description" placeholder="Insert the question..." class="form-control"/>
+		<input id="inputDescription" type="text" name="description" placeholder="Insert the question..." class="form-control" required/>
 
 		<label>
 			<input type="radio" name="public" value="1"/> Public 

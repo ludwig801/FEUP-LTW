@@ -13,7 +13,7 @@ function addAnswer() {
 
 	if(id < 20) {
 		var paragraph = document.createElement("p");
-		paragraph.innerHTML += "<input type='text' name='answer[" + id + "]' placeholder='Insert answer..." + id + " '/>";
+		paragraph.innerHTML += "<input type='text' name='answer[" + id + "]' placeholder='Insert answer...'" + "required/>";
 
 		answerDiv.appendChild(paragraph);
 	}

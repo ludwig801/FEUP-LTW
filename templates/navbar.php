@@ -12,7 +12,6 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	  
 		<ul class="nav navbar-nav">
-			<li><a href="create_poll.php">Create Poll</a></li>
 			<li><a href="public_polls.php">Public Polls</a></li>
 		</ul>
 			  
@@ -20,6 +19,7 @@
 			<li class="dropdown">
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $_SESSION['myname'] ?><span class="caret"></span></a>
 			  <ul class="dropdown-menu" role="menu">
+				<li><a href="create_poll.php">Create Poll</a></li>
 				<li><a href="#">My Polls</a></li>
 				<li><a href="#">Polls I Answered</a></li>
 				<li><a href="#">My Friends</a></li>

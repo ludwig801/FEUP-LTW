@@ -17,7 +17,7 @@
 
 <div class="panel panel-default">
 
-	<div class="panel-heading">My Polls</div>
+	<div class="panel-heading">Public Polls</div>
 		<table class="table">
 		
 			<tr>
