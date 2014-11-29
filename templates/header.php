@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="content/css/style.css">
 		
-		<link rel="shortcut icon" type="image/x-icon" href="content/images/polls_icon_other.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
 		<!-- Scripts -->
 		<!-- jQuery CDN -->

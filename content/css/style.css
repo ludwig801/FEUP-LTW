@@ -93,12 +93,14 @@ footer p {
 	margin-top: 0.5em;
 }
 
-
-
 #hsearch  {
     background:transparent url("../images/search.png") no-repeat scroll left center;
     margin:0;
     max-width:230px;
     padding-left:16px;
 	text-indent: 20px;
+}
+
+p.error {
+	color: red;
 }
