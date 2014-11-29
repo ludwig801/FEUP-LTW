@@ -48,7 +48,6 @@
 
 		<div id="answers">
 		</div>
-		
 		<!--<p><input type="file" name="image" id="image" title="No file selected" ></p>-->
 
 		<input type="submit" value="Save" name="submit" class="btn btn-lg btn-primary"/>
@@ -57,7 +56,5 @@
 	</fieldset>
 </form>
 
-
 <?php include('templates/footer.php'); ?>
-
 
