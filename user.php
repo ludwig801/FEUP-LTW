@@ -34,7 +34,7 @@
 							<td><?=$row['description']?></td>
 							<td><?=$row['public']?></td>
 							<td><?=$row['number_of_answers']?></td>
-							<td><a href="results.php?id=<?=$row['id']?>">View Answers</a></td>
+							<td><a href="poll_view_answers.php?id=<?=$row['id']?>">View Answers</a></td>
 							<td><a href="edit_poll.php?id=<?=$row['id']?>">Edit</a></td>
 							<td><a href="javascript: confirmDelete(<?=$row['id']?>);">Delete</a></td>
 							<td><a href="poll_details.php?id=<?=$row['id']?>")">Details</a></td>

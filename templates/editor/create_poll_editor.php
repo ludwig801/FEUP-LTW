@@ -35,7 +35,7 @@
 						</div>
 						<span class="input-group-addon">Private</span>
 						<div class="input-group-addon">
-							<input type="radio" class="form-control" name="public" value="0" <?php if(isset($_POST['public']) && $_POST['public'] == 0) echo 'checked'; ?>/>
+							<input type="radio" name="public" value="0" <?php if(isset($_POST['public']) && $_POST['public'] == 0) echo 'checked'; ?>/>
 						</div>
 					</div>
 				</div>
