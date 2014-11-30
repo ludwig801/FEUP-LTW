@@ -32,9 +32,7 @@
 		$stmt->execute();
 		
 		$result = $stmt->fetchAll();
-		
-		echo count($result);
-		
+
 		if(count($result) > 0) return 1;
 		else return 0;
 	}
