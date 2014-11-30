@@ -19,8 +19,11 @@
 			  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $_SESSION['myname'] ?><span class="caret"></span></a>
 			  <ul class="dropdown-menu" role="menu">
 				<li><a href="create_poll.php">Create Poll</a></li>
+				<!--<li><a href="#">Edit Poll</a></li>-->
+				<li class="divider"></li>
+				<li><a href="#">My Answered Polls</a></li>
+				<!--<li class="divider"></li>-->
 				<li><a href="user.php">My Polls</a></li>
-				<li><a href="#">Polls I Answered</a></li>
 				<li><a href="#">My Friends</a></li>
 				<li class="divider"></li>
 				<li><a href="#">Settings</a></li>
@@ -29,9 +32,9 @@
 			</li>
 		 </ul>
 		 
-		<form method="GET" action="user.php" class="navbar-form navbar-right" role="search">
+		<form method="GET" action="public_polls.php" class="navbar-form navbar-right" role="search">
 			<div class="form-group">
-			  <input id="hsearch" type="text" class="form-control" placeholder="Search polls..." name="query">
+				<input id="hsearch" type="text" class="form-control" placeholder="Search polls..." name="query">
 			</div>
 			<button type="submit" class="btn btn-default">Search</button>
 		</form>

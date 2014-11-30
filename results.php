@@ -7,6 +7,7 @@
 
 	include('lock.php');
 	include('templates/header.php');
+	include('templates/navbar.php');
 	
 	if(isset($_GET['id'])) {
 		$params = array('db' => $db, 'id' => $_GET['id']);
@@ -19,18 +20,48 @@
 
 ?>
 
+<div class="panel panel-primary">
 
-<h3> <?= $poll['description'] ?>
-
-
-<?php foreach($answers as $row) { 
-		
-		$vars = array('db' => $db, 'poll_id' => $_GET['id'], 'answer_id' => $row['id']);
-		$answerResults = getPollAnswerResults($vars);
-?>
-	<p><?= $row['description'] ?> :: Total = <?= count($answerResults) ?></p>
+	<div class="panel-heading">
+		<div class="panel-title">
+			<?=$poll['description']?>
+			<a class="close" href="user.php">&times</a>
+		</div>
+	</div>
 	
-<?php } ?>
-
+	<div class="panel-body">
+		
+		<div class="panel panel-default">
+		
+			<!--<div class="panel-heading">
+				<div class="panel-title">Statistics</div>
+			</div>-->
+			
+				<table class="table">
+					<tr>
+						<th>Answers</th>
+						<th>Count</th>
+					</tr>
+					
+					<?php
+						foreach($answers as $row) {
+						
+							$vars = array('db' => $db, 'poll_id' => $_GET['id'], 'answer_id' => $row['id']);
+							$answerResults = getPollAnswerResults($vars);
+							
+							echo '<tr>';
+							echo '<td>' . $row['description'] . '</td>';
+							echo '<td>' . count($answerResults) . '</td>';
+							echo '</tr>';
+						}
+					?>
+					
+				</table>
+		
+		</div>
+		
+	</div>
+	
+</div>
 
 <?php include('templates/footer.php'); ?>

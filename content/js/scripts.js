@@ -32,6 +32,10 @@ function confirmDelete(id) {
     }
 }
 
+function draw(response) {
+	alert(response);
+}
+
 // Deletes an answer from the editor. 
 // Each instance of an answer editor should have the class "answer-editor", and must be placed inside a div container with the ID "answers". 
 // The delete button must have the class "delete-answer".
