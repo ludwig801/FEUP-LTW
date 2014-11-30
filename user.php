@@ -15,7 +15,10 @@
 
 <div class="panel panel-primary">
 
-	<div class="panel-heading">My Polls</div>
+	<div class="panel-heading">
+		<div class="panel-title">My Polls</div>
+	</div>
+	
 		<!--<div class="panel-body"></div>-->
 			<table class="table">
 				<tr>

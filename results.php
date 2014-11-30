@@ -24,7 +24,7 @@
 
 	<div class="panel-heading">
 		<div class="panel-title">
-			<?=$poll['description']?>
+			<?=$poll['description']?> | View answers
 			<a class="close" href="user.php">&times</a>
 		</div>
 	</div>

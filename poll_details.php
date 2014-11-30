@@ -21,7 +21,7 @@
 
 	<div class="panel-heading">
 		<h2 class="panel-title">
-			<?=$result['description']  ?>
+			<?=$result['description']?> | View details
 			<a class="close" href="user.php">&times</a>
 		</h2>
 	</div>

@@ -17,7 +17,9 @@
 
 <div class="panel panel-primary">
 
-	<div class="panel-heading">Public Polls</div>
+	<div class="panel-heading">
+		<div class="panel-title">Public Polls</div>
+	</div>
 		<table class="table">
 		
 			<tr>
