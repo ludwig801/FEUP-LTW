@@ -17,10 +17,14 @@
 		}
 		
 		// Checks privacy settings.
-		if(empty($_POST['public'])) {
+		if(!isset($_POST['public'])) {
 			$errors[] = "Choose a privacy setting.";
-		} else {
+		} else if($_POST['public'] != '1' && $_POST['public'] != '0') {
+			$errors[] = "Choose a privacy setting.";
+		}
+		else {
 			$public = validateInput($_POST['public']);
+			echo 'PUBLIC | ' . $public;
 		}
 
 		if(isset($_POST['answer'])) {
