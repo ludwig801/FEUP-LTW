@@ -1,25 +1,51 @@
 // Adds a new answer to the editor.
 // The answer will be all placed inside a div container with the id "answers". This container must exist before calling the function.
-function addAnswer() {
-
-	var answerDiv = document.getElementById("answers");
+function getNumberOfElements(parent) {
 
 	var id = 0;
 
-	var ans = answerDiv.firstElementChild;
+	var childElem = parent.firstElementChild;
 
-	while(ans) {
-		if(ans.innerHTML != undefined) 	id++;
-		ans = ans.nextSibling;
+	while(childElem) {
+		if(childElem.innerHTML != undefined) 	id++;
+		childElem = childElem.nextSibling;
 	}
+	
+	return id;
+}
 
-	if(id < 20) {
-		var paragraph = document.createElement("p");
-		paragraph.innerHTML += "<div class='answer-editor'><input type='text' name='answer[" + id + "]' placeholder='Insert answer...'" + "required/><a class='close delete-answer' href='#'>&times;</a></div>";
+function addAnswer() {
 
+	var answerDiv = document.getElementById('answers');
+	
+	var num = getNumberOfElements(answerDiv);
+
+	if(num < 20) {
+		var paragraph = document.createElement('p');
+		//paragraph.innerHTML += "<div class='answer-editor'><input type='text' name='answer[" + id + "]' placeholder='Insert answer...'" + "required/><a class='close delete-answer' href='#'>&times;</a></div>";
+
+		paragraph.innerHTML += '<div class="answer-editor"> <div class="row"> <div class="col-lg-6"> <div class="input-group">\
+							<input type="text" class="form-control" name="answer[' + num + ']" placeholder="Insert answer..." required />\
+							<span class="input-group-addon"><a href="#" class="close delete-answer">&times;</a></span>\
+							</div> </div> </div> </div>';
+						
 		answerDiv.appendChild(paragraph);
 	}
+}
 
+function addExistingAnswer(answer, id) {
+
+	var answerDiv = document.getElementById('answers');
+
+	var paragraph = document.createElement('p');
+	//paragraph.innerHTML += "<div class='answer-editor'><input type='text' name='answer[" + id + "]' placeholder='Insert answer...'" + "required/><a class='close delete-answer' href='#'>&times;</a></div>";
+
+	paragraph.innerHTML += '<div class="answer-editor"> <div class="row"> <div class="col-lg-6"> <div class="input-group">\
+						<input type="text" class="form-control" name="answer[' + id + ']" value="' + answer + '" placeholder="Insert new answer..." required />\
+						<span class="input-group-addon"><a href="#" class="close delete-answer">&times;</a></span>\
+						</div> </div> </div> </div>';
+					
+	answerDiv.appendChild(paragraph);
 }
 
 // Shows a confirmation message that checks if the user really wants to delete a poll. 

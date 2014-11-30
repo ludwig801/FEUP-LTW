@@ -35,8 +35,8 @@
 				if(empty($ans)) {
 					$errors[] = "The answers can't be empty.";
 				}
-				if(strlen($ans) < 3) {
-					$errors[] = "Each answer must have more than 3 characters.";
+				if(strlen($ans) < 2) {
+					$errors[] = "Each answer must have more than 1 character.";
 				}
 			}
 

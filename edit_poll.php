@@ -8,6 +8,7 @@
 	include('templates/header.php');
 	include('templates/navbar.php');
 	
+	include_once('templates/validation/create_poll_form_validation.php');
 	
 	if(isset($_POST['description']) && isset($_POST['public']) && isset($_POST['id']) && isset($_POST['poll_id']) && isset($_POST['answer'])) {
 	
@@ -29,6 +30,8 @@
 	
 		$params = ['db' => $db, 'id' => $_GET['id']];
 		$result = getPollById($params);
+		$descr =  $result['description'];
+		$privacy = $result['public'];
 		$answers = getPollAnswers($params);
 		
 	} else {
@@ -37,71 +40,24 @@
 		
 		header("location: user.php");
 	}
-
 ?>
 
 <form method="POST" action"edit_poll.php">
 
-	<div class="panel panel-primary">
-	
-		<input type="hidden" value="<?=$_GET['id']?>" name="id" />
+	<input type="hidden" value="<?=$_GET['id']?>" name="id" />
 
-		<div class="panel-heading">
-			<div class="panel-title">
-				Edit Poll
-				<a class="close" href="user.php">&times</a>
-			</div>
-		</div>
-		
-		<div class="panel-body">
-			<p>
-				<div class="input-group">
-					<span class="input-group-addon">Question</span>
-					<input type="text" class="form-control" name="description" value="<?= $result['description'] ?>" placeholder="The question..." />
-				</div>
-			</p>
-			
-			<p>
-				<div class="row">
-					<div class="col-lg-2">
-						<div class="input-group">
-							<span class="input-group-addon">Public</span>
-							<span class="input-group-addon">
-								<input type="radio" name="public" value="1"/>
-							</span>
-							<span class="input-group-addon">Private</span>
-							<span class="input-group-addon">
-								<input type="radio" name="public" value="0" checked/>
-							</span>
-						</div>
-					</div>
-				</div>
-			</p>
+	<?php
 	
-			<p> Possible answers: </p>
-				
-			<div id="answers">
-			
-				<?php
-					$count = 0;
-					foreach($answers as $row) { 
-				?>
-					<p><input type='text' name='answer[<?= $count ?>]' value='<?=$row["description"]?>' placeholder="Insert answer... <?= $count ?>" /></p>
-					<?php $count++; ?>
-				<?php } ?>
-				
-			</div>
-			
-			<p><a href="javascript: addAnswer();"> Add answer </a></p>
-			
-			<input type="hidden" name="poll_id" value=<?= $result['id']?> />
-			
-			<p><input type="submit" value="Save" /></p>
-			
-		</div>
+		$_POST['description'] = $descr;
 		
-	</div>
-
+		$_POST['public'] = $privacy;
+	
+		$_POST['answers'] = $answers;
+		
+		$_GET['type'] = 'Edit';
+		include('templates/editor/create_poll_editor.php');
+	?>
+	
 </form>
 	
 
