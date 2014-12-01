@@ -3,7 +3,12 @@
 
 		<div class="panel-heading">
 			<div class="panel-title">
-				<?=$_GET['type']?> Poll
+				<?php 
+					if(isset($_GET['id'])) {
+						echo 'Edit Poll';
+					} else {
+						echo 'Create Poll';
+					} ?>
 				<a class="close" href="user.php">&times</a>
 			</div>
 		</div>

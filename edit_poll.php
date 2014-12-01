@@ -54,7 +54,6 @@
 	
 		$_POST['answers'] = $answers;
 		
-		$_GET['type'] = 'Edit';
 		include('templates/editor/create_poll_editor.php');
 	?>
 	
