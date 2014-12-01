@@ -8,7 +8,8 @@
 	include('templates/header.php');
 	include('templates/navbar.php');
 	
-	include_once('templates/validation/create_poll_form_validation.php');
+	// Validates form.
+
 	
 	if(isset($_POST['description']) && isset($_POST['public']) && isset($_POST['id']) && isset($_POST['poll_id']) && isset($_POST['answer'])) {
 	

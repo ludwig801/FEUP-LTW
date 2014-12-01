@@ -15,9 +15,12 @@
 		
 		<div class="panel-body">
 			<!-- Show errors -->
-			<?php foreach($errors as $err) {
-					echo "<p class='error'> * $err </p>";
-				  } 
+			<?php 
+				if(isset($errors)) {
+					foreach($errors as $err) {
+						echo "<p class='error'> * $err </p>";
+					} 
+				}
 			?>
 			
 			<!-- Description -->
