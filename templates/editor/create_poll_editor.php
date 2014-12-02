@@ -1,5 +1,5 @@
 <form role="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
-	<div class="panel panel-primary">
+	<div class="panel panel-primary adder">
 
 		<div class="panel-heading">
 			<div class="panel-title">
@@ -24,8 +24,22 @@
 			<p/>
 			<p/>
 			
+			<div class="row">
+				<div class="col-lg-1">
+					<div class="input-group">
+						<span class="input-group-addon">Private</span>
+						<div class="input-group-addon">
+							<!--<input type="radio" name="public" value="0"--> <?php if(isset($_POST['public']) && $_POST['public'] == 0) echo 'checked'; ?> <!--/>-->
+							<input type="checkbox" onchange="javascript: alert(this)">
+						</div>
+					</div>
+				</div>
+			</div>
+			<p/>
+			<p/>
+			
 			<!-- Add Question -->
-			<div class="btn btn-default add-question">Add Question</div>
+			<a href="javascript: addQuestion()"><input type="button"  value="Add Question" class="btn btn-default"/></a>
 			<p/>
 		</div>
 		
@@ -40,11 +54,7 @@
 			?>
 			
 			<div id="questions">
-				<!-- Show questions -->
-				<?php
-					include('templates/question.php');
-					include('templates/question.php');
-				?>
+				<?php include('templates/question.php'); ?>
 			</div>	
 				
 		</div>

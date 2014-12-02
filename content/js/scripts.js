@@ -33,9 +33,8 @@ function addAnswer() {
 	}
 }
 
-function minimizeQuestion() {
-	alert(this.parent);
-	//object.className += 'hidden';
+function addQuestion() {
+	
 }
 
 function addExistingAnswer(answer, id) {
@@ -67,18 +66,25 @@ function draw(response) {
 	alert(response);
 }
 
-$(window).load(function() {
-	// Deletes an answer from the editor. 
-	// Each instance of an answer editor should have the class "answer-editor", and must be placed inside a div container with the ID "answers". 
-	// The delete button must have the class "delete-answer".
+function createAnswerBehaviours() {
+
+	// Adds an answer to the div [panel-body] when the [Add Answer] button is pressed
+	
+	
+	// Deletes an answer when the answer's [x] icon is pressed
 	$('#answers').on("click", '.delete-answer', function () {
+	
 		$(this).parents("div.answer-editor:first").remove();
+		
 		return false;
 	});
-	
+}
+
+function createMinimizeBehaviourToQuestion() {
 	// Minimizes a question from the editor. 
 	// Each instance of the question editor should have the class "min-question", and must be placed inside a div container with the class "minimizable". 
 	// The delete button must have the class "min-question".
+
 	$('.minimizable').on("click", '.min-question', function () {
 	
 		var panel = $(this).parents(".minimizable");
@@ -97,14 +103,29 @@ $(window).load(function() {
 			
 			showHideBtn.html("Hide Question");	
 		}
-
-		//alert($(questionPanel).children(".panel-body").get());
-		//alert($(questionPanel).children(".panel-footer").get());
-		//$(questionPanel).children(".div").remove();
-		//.children(".panel-body").hide();
-		//$(this).parents(".minimizable").children(".panel-footer").hide();
 		return false;
 	});
+}
+
+function createAddQuestionBehaviour() {
+	$('.adder').on('click','.add-question', function () {
+		
+		var panel = $(this).parents(".adder");
+		
+		var questionsDiv = $(panel).find('#questions');
+
+		return false;
+	});
+}
+
+$(window).load(function() {
+
+	createAnswerBehaviours();
+	
+	createMinimizeBehaviourToQuestion();
+	
+	createAddQuestionBehaviour();
+	
 });
 
 
