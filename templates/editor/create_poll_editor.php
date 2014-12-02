@@ -27,7 +27,7 @@
 			<div class="row">
 				<div class="col-lg-1">
 					<div class="input-group">
-						<span class="input-group-addon">Private</span>
+						<span class="input-group-addon">Public</span>
 						<div class="input-group-addon">
 							<input type="checkbox" <?php if(isset($_POST['public']) && $_POST['public'] == 0) echo 'checked'; ?>/>
 						</div>
