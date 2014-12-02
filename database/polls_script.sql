@@ -17,15 +17,22 @@ CREATE TABLE polls (
 	number_of_answers INTEGER
 );
 
-CREATE TABLE answers (
+CREATE TABLE questions (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	description VARCHAR,
 	poll_id INTEGER REFERENCES polls(id)
+);
+
+CREATE TABLE answers (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	description VARCHAR,
+	question_id INTEGER REFERENCES questions(id)
 );
 
 CREATE TABLE poll_answers (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	user_id INTEGER REFERENCES user_id(id),
 	poll_id INTEGER REFERENCES polls(id),
+	question_id INTEGER REFERENCES questions(id),
 	answer_id INTEGER REFERENCES answers(id)
 );
