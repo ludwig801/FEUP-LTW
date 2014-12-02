@@ -23,13 +23,17 @@
 			</div>
 			<p/>
 			<p/>
-			
+				
 			<div class="row">
 				<div class="col-lg-1">
 					<div class="input-group">
-						<span class="input-group-addon">Public</span>
+						<span class="form-control">Public</span>
 						<div class="input-group-addon">
-							<input type="checkbox" <?php if(isset($_POST['public']) && $_POST['public'] == 0) echo 'checked'; ?>/>
+							<input type="radio" name="public" value="1" <?php if(isset($_POST['public'])) { if($_POST['public'] == 1) echo 'checked'; } else echo 'checked'; ?>/>
+						</div>
+						<span class="form-control">Private</span>
+						<div class="input-group-addon">
+							<input type="radio" name="public" value="0" <?php if(isset($_POST['public']) && $_POST['public'] == 0) echo 'checked'; ?>/>
 						</div>
 					</div>
 				</div>
