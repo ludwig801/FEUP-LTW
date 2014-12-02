@@ -21,12 +21,12 @@
 				<li><a href="create_poll.php">Create Poll</a></li>
 				<!--<li><a href="#">Edit Poll</a></li>-->
 				<li class="divider"></li>
-				<li><a href="#">My Answered Polls</a></li>
+				<li class="disabled"><a href="#">My Answered Polls</a></li>
 				<!--<li class="divider"></li>-->
 				<li><a href="user.php">My Polls</a></li>
-				<li><a href="#">My Friends</a></li>
+				<li class="disabled"><a href="#">My Friends</a></li>
 				<li class="divider"></li>
-				<li><a href="#">Settings</a></li>
+				<li class="disabled"><a href="#">Settings</a></li>
 				<li><a href="logout.php">Logout</a></li>
 			  </ul>
 			</li>
