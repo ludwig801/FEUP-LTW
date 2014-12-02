@@ -1,5 +1,12 @@
 <?php
 
+	function addAllAnswers($params) {
+		foreach($params['answer'] as $ans) {
+			$ansParams = array('db' => $params['db'], 'description' => $ans, 'poll_id' => $params['poll_id']);
+			addAnswer($ansParams);
+		}
+	}
+
 	function addAnswer($vars) {
 
 		$db = $vars['db'];

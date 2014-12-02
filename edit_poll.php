@@ -9,25 +9,9 @@
 	include('templates/navbar.php');
 	
 	// Validates form.
-
-	
-	if(isset($_POST['description']) && isset($_POST['public']) && isset($_POST['id']) && isset($_POST['poll_id']) && isset($_POST['answer'])) {
-	
-		$params = ['db' => $db, 'id' => $_POST['id'], 'description' => $_POST['description'], 'public' => $_POST['public'], 'poll_id' => $_POST['poll_id']];
-		editPoll($params);
-		deleteAllPollAnswers($params);
+	include('templates/validation/edit_poll_form_validation.php');
 		
-		foreach($_POST['answer'] as $ans) {
-			$poll_id = getLastPollId($db);
-			$vars = ['db' => $db, 'description' => $ans, 'poll_id' => $poll_id];
-			addAnswer($vars);
-		}
-	
-		$_SESSION['message'] = "Poll successfully edited.";
-		
-		header("location: user.php");
-		
-	} else if(isset($_GET['id'])) {
+	if(isset($_GET['id'])) {
 	
 		$params = ['db' => $db, 'id' => $_GET['id']];
 		$result = getPollById($params);

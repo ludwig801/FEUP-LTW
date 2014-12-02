@@ -13,22 +13,16 @@
 		
 			$description = validateInput($_POST['description']);
 			$public = validateInput($_POST['public']);
+			$poll_id = getLastPollId($db);
 			
-			$pollParams = array('db' => $db, 'description' => $description, 'public' => $public, 'myid' => $_SESSION['myid']);
-			addPoll($pollParams);
-			
-			foreach($_POST['answer'] as $ans) {
-				$poll_id = getLastPollId($db);
-				$ansParams = array('db' => $db, 'description' => $ans, 'poll_id' => $poll_id);
-				addAnswer($ansParams);
-			}
+			$params = array('db' => $db, 'description' => $description, 'public' => $public, 'myid' => $_SESSION['myid'], 'poll_id' => $poll_id, 'answers' => $_POST['answer']);
+			addPoll($params);
+			addAllAnswers($params);
 
 			$_SESSION['message'] = "Poll successfully created.";
 
 			header("location: user.php");
-		} else {
-			$errors[] = "There must be at least 2 possible answers.";
-		}
+		} 
 	}
 
 ?>
