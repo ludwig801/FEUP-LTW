@@ -15,7 +15,7 @@
 	include('templates/header.php');
 	include('templates/navbar.php');
 	
-	include('editor/create_poll_editor.php');
+	include('templates/editor/create_poll_editor.php');
 	
 	include('templates/footer.php');
 
