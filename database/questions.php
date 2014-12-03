@@ -6,6 +6,8 @@
 		foreach($params['questions'] as $quest) {
 			$questionParams = array('db' => $params['db'], 'description' => $quest, 'poll_id' => $params['poll_id'], 'question_num' => $questNum, 'answers' => $params['answers']);
 			addQuestion($questionParams);
+			$question_id = getLastQuestionID($params['db']);
+			$questionParams['question_id'] = $question_id;
 			addAnswers($questionParams);
 			$questNum = ($questNum + 1);
 		}
@@ -20,5 +22,14 @@
 
 		$stmt->execute();
 	}
+	
+	// Returns the ID of the last question added to the database.
+	function getLastQuestionID($db) {
+		$stmt = $db->prepare('SELECT MAX(id) FROM questions');
+		$stmt->execute();
+		$result = $stmt->fetch();
+		return $result['MAX(id)'];
+	}
+
 
 ?>

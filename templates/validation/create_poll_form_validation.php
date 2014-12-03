@@ -15,12 +15,14 @@
 		
 			$description = validateInput($_POST['pollTitle']);
 			$public = validateInput($_POST['public']);
-			$poll_id = getLastPollId($db);
 			
-			$params = array('db' => $db, 'description' => $description, 'public' => $public, 'myid' => $_SESSION['myid'], 'poll_id' => $poll_id, 
-				'questions' => $_POST['question'], 'answers' => $_POST['answer']);
+			$params = array('db' => $db, 'description' => $description, 'public' => $public, 'myid' => $_SESSION['myid'],  'questions' => $_POST['question'], 'answers' => $_POST['answer']);
 				
 			addPoll($params);
+			
+			$poll_id = getLastPollId($db);
+			$params['poll_id'] = $poll_id;
+			
 			addQuestions($params);
 
 			$_SESSION['message'] = "Poll successfully created.";
