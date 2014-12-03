@@ -1,21 +1,24 @@
 <?php
-
-	function addAllAnswers($params) {
-		foreach($params['answer'] as $ans) {
-			$ansParams = array('db' => $params['db'], 'description' => $ans, 'poll_id' => $params['poll_id']);
-			addAnswer($ansParams);
+	
+	function addAnswers($params) {
+		foreach($params['answers'] as $i => $row) {
+			if($i == $params['question_num']) {
+				foreach($row as $ans) {
+					echo $ans;
+					$ansParams = array('db' => $params['db'], 'description' => $ans, 'poll_id' => $params['poll_id']);
+					addAnswer($ansParams);
+				}
+			}
 		}
 	}
 
-	function addAnswer($vars) {
-
-		$db = $vars['db'];
+	function addAnswer($params) {
+		$db = $params['db'];
 		$stmt = $db->prepare('INSERT INTO answers VALUES (NULL, :description, :poll_id)');
-		$stmt->bindParam(':description', $vars['description'], PDO::PARAM_STR);
-		$stmt->bindParam(':poll_id', $vars['poll_id'], PDO::PARAM_STR);
+		$stmt->bindParam(':description', $params['description'], PDO::PARAM_STR);
+		$stmt->bindParam(':poll_id', $params['poll_id'], PDO::PARAM_STR);
 
 		$stmt->execute();
-
 	}
 
 	function getPollAnswers($params) {

@@ -29,35 +29,30 @@ function getInputElement(parent) {
 
 function getQuestionID(answerDiv) {
 	var panel = $(answerDiv).parents('.question-block');
-	
-	var panelBody = $(panel).children('.panel-body');
-	
+	var panelBody = $(panel).children('.panel-body');	
 	var inputTag = getInputElement(panelBody);
-	
-	var name = inputTag.name;
-	
+	var name = inputTag.name;	
 	return name[name.length-2];
 }
 
 function addAnswer(answerDiv) {
 
 	var parentID = getQuestionID(answerDiv);
-	
 	var num = getNumberOfElements(answerDiv, 'DIV'); // <-- must be in capital letters
 
 	if(num < 10) { // <-- max 10 answers per question
-		var answerBlock = document.createElement('div');
-		
+	
+		var answerBlock = document.createElement('div');	
 		answerDiv.appendChild(answerBlock);
 		
 		$.get('templates/answer.php', '', function(data) {
+		
 			answerBlock.innerHTML = data;
 			
 			var inputTag = getInputElement(answerBlock);
-		
 			inputTag.name = 'answer[' + parentID + '][' + num + ']';
-			
 			inputTag.placeholder += ' [' + parentID + '][' + num + ']';
+			
 		}, 'html');
 	}
 }
@@ -65,7 +60,7 @@ function addAnswer(answerDiv) {
 function addQuestion(questionsDiv) {
 	var num = getNumberOfElements(questionsDiv, 'DIV'); // <-- must be in capital letters
 
-	if(num < 20) { // <-- max 20 questions per poll
+	if(num < 5) { // <-- max 5 questions per poll
 		var questionBlock = document.createElement('div');
 		
 		questionsDiv.appendChild(questionBlock);
@@ -73,14 +68,13 @@ function addQuestion(questionsDiv) {
 		$.get('templates/question.php', '', function(data) {
 			questionBlock.innerHTML = "" + data;
 			
+			// Adds variable name to input control.
 			var inputTag = getInputElement(questionBlock);
-		
-			inputTag.name = 'description[' + num + ']';
-			
+			inputTag.name = 'question[' + num + ']';
 			inputTag.placeholder += num;
 			
+			// Adds two initial questions.
 			var answerDiv = firstTagChild(questionBlock, '#answers');
-			
 			addAnswer(answerDiv);
 			addAnswer(answerDiv);
 		}, 'html');
@@ -92,7 +86,6 @@ function addExistingAnswer(answer, id) {
 	var answerDiv = document.getElementById('answers');
 
 	var paragraph = document.createElement('p');
-	//paragraph.innerHTML += "<div class='answer-editor'><input type='text' name='answer[" + id + "]' placeholder='Insert answer...'" + "required/><a class='close delete-answer' href='#'>&times;</a></div>";
 
 	paragraph.innerHTML += '<div class="answer-editor"> <div class="row"> <div class="col-lg-6"> <div class="input-group">\
 						<input type="text" class="form-control" name="answer[' + id + ']" value="' + answer + '" placeholder="Insert new answer..." required />\
