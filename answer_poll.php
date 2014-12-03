@@ -22,7 +22,7 @@
 
 		if($check) {
 			$_SESSION['message'] = "You've already answered to this poll. Thanks.";
-			header("location: results.php?" . $_SERVER['QUERY_STRING']);
+			header("location: poll_view_answers.php?" . $_SERVER['QUERY_STRING']);
 		}
 	
 		$result = getPollById($params);

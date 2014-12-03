@@ -47,11 +47,14 @@ CREATE TABLE poll_answers (
 
 /* Insert new poll */
 
-INSERT INTO polls VALUES (NULL, 'Titulo pa', 1, 1, '', 0);
-
+INSERT INTO polls VALUES (NULL, 'Poll 1', 1, 1, '', 0);
 INSERT INTO questions VALUES (NULL, 'Le question', 1);
-
 INSERT INTO answers VALUES (NULL, 'resposta simpatica', 1);
 INSERT INTO answers VALUES (NULL, 'resposta nao tao simpatica', 1);
-
 INSERT INTO poll_answers VALUES (NULL, 1, 1, 1, 2);
+
+INSERT INTO polls VALUES (NULL, 'Poll 2', 0, 1, '', 0);
+INSERT INTO questions VALUES (NULL, 'Le question', 2);
+INSERT INTO answers VALUES (NULL, 'resposta simpatica', 2);
+INSERT INTO answers VALUES (NULL, 'resposta nao tao simpatica', 2);
+INSERT INTO poll_answers VALUES (NULL, 1, 2, 1, 1);

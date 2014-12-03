@@ -37,16 +37,19 @@
 				$vars = array('db' => $db, 'poll_id' => $_GET['id'], 'answer_id' => $row['id']);
 				$answerResults = getPollAnswerResults($vars);
 				
-				echo '<div class="row">
-						<div class="col-lg-6">
-							<div class="input-group">
-							  <span class="input-group-addon">' . count($answerResults) . '</span>
-							  <span class="form-control">' . $row['description'] . '</span>
-							</div><!-- /input-group -->
-						  </div><!-- /.col-lg-6 -->
-						</div><p/>';
-			}
-		?>
+				?>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="input-group">
+							<span class="input-group-addon"><?=count($answerResults)?></span>
+							<span class="form-control"><?=$row['description']?></span>
+						</div>
+					</div>
+				</div>
+				<p/>';
+						
+						
+		<?php } ?>
 		
 	</div>
 	
