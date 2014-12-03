@@ -34,6 +34,9 @@
 				$errors[] = "There must be at least 2 possible answers.";
 			}
 			
+			// Checks questions.
+			foreach($data['question
+			
 			// Checks answers.
 			foreach($data['answer'] as $ans) {
 				if(empty($ans)) {

@@ -36,3 +36,12 @@ CREATE TABLE poll_answers (
 	question_id INTEGER REFERENCES questions(id),
 	answer_id INTEGER REFERENCES answers(id)
 );
+
+/* Insert new poll */
+
+INSERT INTO polls VALUES (NULL, 'Titulo pa', 1, 1, '', 0);
+
+INSERT INTO questions VALUES (NULL, 'Le question', 1);
+
+INSERT INTO answers VALUES (NULL, 'A tua mae e uma resposta', 1);
+INSERT INTO answers VALUES (NULL, 'A tua mae e uma grande resposta', 1);

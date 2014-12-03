@@ -29,11 +29,11 @@
 					<div class="input-group">
 						<span class="form-control">Public</span>
 						<div class="input-group-addon">
-							<input type="radio" name="public" value="1" <?php if(isset($_POST['public'])) { if($_POST['public'] == 1) echo 'checked'; } else echo 'checked'; ?>/>
+							<input type="radio" name="public" value="1" <?php if(isset($_POST['public'])) { if($_POST['public'] == 1) echo 'checked'; }  ?>/>
 						</div>
 						<span class="form-control">Private</span>
 						<div class="input-group-addon">
-							<input type="radio" name="public" value="0" <?php if(isset($_POST['public']) && $_POST['public'] == 0) echo 'checked'; ?>/>
+							<input type="radio" name="public" value="0" <?php if(isset($_POST['public'])) { if($_POST['public'] == 0) echo 'checked'; } else echo 'checked';?>/>
 						</div>
 					</div>
 				</div>

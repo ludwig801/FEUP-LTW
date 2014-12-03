@@ -15,16 +15,33 @@ function getNumberOfElements(parent, tag) {
 	return id;
 }
 
-function getInputElement(parent) {
-
-	//alert(parent);
+function firstTagChild(parent, tag) {
+	var toSearch = parent;
 	
+	return $(toSearch).find(tag).get(0);
+}
+
+function getInputElement(parent) {
 	var toSearch = parent;
 
 	return $(toSearch).find(':input').get(0);
 }
 
+function getQuestionID(answerDiv) {
+	var panel = $(answerDiv).parents('.question-block');
+	
+	var panelBody = $(panel).children('.panel-body');
+	
+	var inputTag = getInputElement(panelBody);
+	
+	var name = inputTag.name;
+	
+	return name[name.length-2];
+}
+
 function addAnswer(answerDiv) {
+
+	var parentID = getQuestionID(answerDiv);
 	
 	var num = getNumberOfElements(answerDiv, 'DIV'); // <-- must be in capital letters
 
@@ -38,9 +55,9 @@ function addAnswer(answerDiv) {
 			
 			var inputTag = getInputElement(answerBlock);
 		
-			inputTag.name = 'answer[' + num + ']';
+			inputTag.name = 'answer[' + parentID + '][' + num + ']';
 			
-			inputTag.placeholder += num;
+			inputTag.placeholder += ' [' + parentID + '][' + num + ']';
 		}, 'html');
 	}
 }
@@ -61,6 +78,11 @@ function addQuestion(questionsDiv) {
 			inputTag.name = 'description[' + num + ']';
 			
 			inputTag.placeholder += num;
+			
+			var answerDiv = firstTagChild(questionBlock, '#answers');
+			
+			addAnswer(answerDiv);
+			addAnswer(answerDiv);
 		}, 'html');
 	}
 }
