@@ -34,7 +34,9 @@
 					<!--<td><?=$row['id']?></td>-->
 					<td><?=$row['description']?></td>
 					<td><?=$row['user_id']?></td>
-					<td><a href="answer_poll.php?id=<?=$row['id']?>">Answer</a></td>
+					<td><a href="answer_poll.php?id=<?=$row['id']?>">
+						<span style="color: green;" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+					</a></td>
 				</tr>
 			<?php 	} ?>
 	
