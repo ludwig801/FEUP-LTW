@@ -35,7 +35,7 @@
 			}
 			
 			// Checks questions.
-			foreach($data['question
+			//foreach($data['question'] as 
 			
 			// Checks answers.
 			foreach($data['answer'] as $ans) {
