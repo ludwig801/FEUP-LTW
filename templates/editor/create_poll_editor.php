@@ -67,8 +67,14 @@
 			<?php if(isset($_POST['question'])) {
 				$questionNum = 0;
 				foreach($_POST['question'] as $row) {  
-					$questionDescription = $row['description'];
-					$questionID = $row['id'];
+					if(isset($row['description'])) {
+						$questionDescription = $row['description'];
+						$questionID = $row['id'];
+					} else {
+						$questionDescription = $row;
+						$questionID = $questionNum;
+					}
+
 					include('templates/question.php');
 					$questionNum++;
 				}
