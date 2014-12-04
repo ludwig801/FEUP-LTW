@@ -17,7 +17,7 @@
 			$public = validateInput($_POST['public']);
 			
 			$params = array('db' => $db, 'description' => $description, 'public' => $public, 'myid' => $_SESSION['myid'],  'questions' => $_POST['question'], 'answers' => $_POST['answer']);
-				
+			print_r($params);
 			addPoll($params);
 			
 			$poll_id = getLastPollId($db);

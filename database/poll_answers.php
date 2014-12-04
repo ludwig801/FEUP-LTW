@@ -18,7 +18,6 @@
 		$stmt = $db->prepare('INSERT INTO poll_answers VALUES (NULL, :user_id, :poll_id, :answer_id)');
 		$stmt->bindParam(':user_id', $params['user_id'], PDO::PARAM_STR);
 		$stmt->bindParam(':poll_id', $params['poll_id'], PDO::PARAM_STR);
-		$stmt->bindParam(':question_id', $params['question_id'], PDO::PARAM_STR);
 		$stmt->bindParam(':answer_id', $params['answer_id'], PDO::PARAM_STR);
 
 		$stmt->execute();

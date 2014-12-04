@@ -77,6 +77,27 @@
 	
 		$errors = array();
 		
+		if(!isset($data['answer'])) {
+			$errors[] = "No answers choosen.";
+		} else {
+		
+			if(!isset($data['id'])) {
+				
+				$errors[] = "Poll ID not found.";
+			
+			} else {
+						
+				foreach($data['answer'] as $row) {
+					
+					if(!isset($row)) {
+						$errors[] = "Unknown error. Try again.";
+					} 
+				}
+			}
+
+		}
+			
+		return $errors;
 		
 	}
 	
