@@ -30,6 +30,19 @@
 		$result = $stmt->fetch();
 		return $result['MAX(id)'];
 	}
+	
+	// Returns the questions that are associated to a given poll.
+	function getPollQuestions($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('SELECT * FROM questions WHERE poll_id = :poll_id');
+		$stmt->bindParam(':poll_id', $params['id'], PDO::PARAM_STR);
+
+		$stmt->execute();
+
+		$result = $stmt->fetchAll();
+
+		return $result;
+	}
 
 
 ?>

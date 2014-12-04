@@ -1,4 +1,5 @@
 <?php	
+
 	function validateInput($data) {
 		// Strips unnecessary characters.
 		$data = trim($data); 

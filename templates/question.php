@@ -14,7 +14,9 @@
 					<span class="input-group-addon">Question</span>
 					<input class="form-control" id="inputDescription" type="text" placeholder="Insert the question..."
 							title="Description must contain between 3 and 20 characters, including upper/lowercase, numbers and '_' symbol"
-							pattern="\w?{3,20}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" required autofocus/>
+							pattern="\w?{3,20}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" 
+							name=<?php if(isset($questionNum)) { echo 'question[' . $questionNum . ']'; } ?>
+							value=<?php if(isset($questionDescription)) { echo $questionDescription; } ?> required autofocus/>
 				</div>
 			</div>
 		</div>
@@ -27,6 +29,6 @@
 		<a href="#" class="add-answer">
 			<input type="button" class="btn btn-default" value="Add Answer">
 		</a>
-		
+
 	</div>
 </div>

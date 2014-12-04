@@ -1,5 +1,3 @@
-// Adds a new answer to the editor.
-// The answer will be all placed inside a div container with the id "answers". This container must exist before calling the function.
 function getNumberOfElements(parent, tag) {
 
 	var id = 0;
@@ -79,6 +77,36 @@ function addQuestion(questionsDiv) {
 			addAnswer(answerDiv);
 		}, 'html');
 	}
+}
+
+function addExistingQuestion(question, id) {
+
+	alert("entrou2");
+	
+	var num = getNumberOfElements(questionsDiv, 'DIV'); // <-- must be in capital letters
+	var questionsDiv = document.getElementById('questions');
+
+	var question = document.createElement('div');
+	questionsDiv.appendChild(question);
+	
+	$.get('template/question.php', '', function(data) {
+		question.innerHTML = "" + data;
+		
+		// Adds variable name and value to question description input.
+		var descriptionInputTag = getInputElement(questionBlock);
+		descriptionInputTag.name = 'question[' + num + ']';
+		descriptionInputTag.value = question;
+		descriptionInputTag.placeholder += num;
+		
+		// Adds variable name and value to question id hidden input.
+		var idInputTag = getInputElement(questionBlock);
+		idInputTag.name = 'questionID[' + num + ']';
+		idInputTag.value = id;
+		
+	}, 'html');
+	
+	return false;
+
 }
 
 function addExistingAnswer(answer, id) {
