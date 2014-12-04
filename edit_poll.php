@@ -36,7 +36,6 @@
 	
 		$_POST['description'] = $descr;		
 		$_POST['public'] = $privacy;
-		//$_POST['answers'] = $answers;
 		$_POST['question'] = $questions;
 		
 		include('templates/editor/create_poll_editor.php');

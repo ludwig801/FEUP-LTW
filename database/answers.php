@@ -35,6 +35,18 @@
 
 	}
 	
+	function getQuestionAnswers($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('SELECT * FROM answers WHERE question_id = :question_id');
+		$stmt->bindParam(':question_id', $params['question_id'], PDO::PARAM_STR);
+
+		$stmt->execute();
+
+		$result = $stmt->fetchAll();
+
+		return $result;
+	}
+	
 	function deleteAllPollAnswers($params) {
 		$db = $params['db'];
 		$stmt = $db->prepare('DELETE FROM answers WHERE poll_id = :poll_id');

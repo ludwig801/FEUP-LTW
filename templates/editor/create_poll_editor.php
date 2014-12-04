@@ -69,7 +69,7 @@
 					$questionNum = 0;
 					foreach($_POST['question'] as $row) {  
 						$questionDescription = $row['description'];
-						$questionID = $row['id']; 
+						$questionID = $row['id'];
 						include('templates/question.php');
 						$questionNum++;
 					}

@@ -23,6 +23,31 @@
 		<p/>
 		
 		<div id="answers">
+		
+			<?php 
+			
+				$questParams = array('db' => $db, 'question_id' => $questionID);
+				$tempAns = getQuestionAnswers($questParams);
+				
+				if(isset($tempAns)) {
+					if(sizeof($tempAns) > 0) {
+						$_POST['answer'] = $tempAns;
+					}
+				}
+				
+				if(isset($_POST['answer'])) {
+				
+					$answerNum = 0;
+					foreach($_POST['answer'] as $row) {  
+						$answerDescription = $row['description'];
+						$answerQuestionID = $row['question_id'];
+						include('templates/answer.php');
+						$answerNum++;
+					}
+
+				}
+				
+			?>
 		</div>
 		
 		<!-- Add answers -->
