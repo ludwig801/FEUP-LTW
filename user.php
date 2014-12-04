@@ -1,21 +1,56 @@
 <?php 
 	include_once('database/connection.php');
 	include_once('database/polls.php');
+	include_once('database/users.php');
 	include_once('database/answers.php');
 
 	include('lock.php');
 	include('templates/header.php');
 	include('templates/navbar.php');
 
-	$params = array($db, $_SESSION['myid']);
-	$result = getUserPolls($params);
+	if(isset($_GET['filter'])) {
+		if($_GET['filter'] == 'personal') {
+		
+			$params = array($db, $_SESSION['myid']);
+			$title = 'My Polls';
+			$result = getUserPolls($params);
+		} else if($_GET['filter'] == 'public') {
+		
+			$title = 'Public Polls';
+			$result = getPublicPolls($db);
+		}
+		else {
+
+			$params = array('db' => $db, 'id' => $_SESSION['myid']);
+			$title = 'All Polls';
+			$result = getAllPolls($params);
+		}
+	}
+	else {
+
+		$params = array('db' => $db, 'id' => $_SESSION['myid']);
+		$title = 'All Polls';
+		$result = getAllPolls($params);
+	}
 ?>
 
 <!-- User polls -->
 <div class="panel panel-primary">
 
 	<div class="panel-heading">
-		<div class="panel-title">My Polls</div>
+		<div class="panel-title">
+			<div class="dropdown">
+			  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+				:: <?= $title ?>
+				<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=all" <?php if($title == 'All Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >All Polls</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=public" <?php if($title == 'Public Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >Public Polls</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=personal" <?php if($title == 'My Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >My Polls</a></li>
+			  </ul>
+			</div>
+		</div>
 	</div>
 
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -40,6 +75,7 @@
 			
 			<tr>
 				<th>Title</th>
+				<th>Owner</th>
 				<th>Public</th>
 				<th>Answers</th>
 				<th></th>
@@ -53,11 +89,21 @@
 				<tr>
 					<td><?=$row['description']?></td>
 					<td>
+						<?php
+							$paramsUser = array('db' => $db, 'id' => $row['user_id']);
+							$username = getUsernameById($paramsUser);
+							echo $username;
+						?>
+					</td>
+					<td>
 						<?php if($row['public'] == 1)
 						echo '<span style="color: green;" class="glyphicon glyphicon-ok" aria-hidden="true"></span>';
 						else echo '<span style="color: red;" class="glyphicon glyphicon-remove" aria-hidden="true"></span>';?>
 					</td>
-					<td><?=$row['number_of_answers']?></td>
+					<td>
+						<?=$row['number_of_answers']?>
+						<!--<span class="badge">42</span>-->
+					</td>
 					<td><a href="javascript: getDetails(<?=$row['id']?>)">
 						<span style="color: blue;" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></span>
 					</a></td>

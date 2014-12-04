@@ -1,4 +1,11 @@
 <?php
+	function getAllPolls($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('SELECT * FROM polls WHERE user_id = :myid OR public = 1');
+		$stmt->bindParam(':myid', $params['id'], PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
 
 	function getPublicPolls($db) {
 		$stmt = $db->prepare('SELECT * FROM polls WHERE public = 1');

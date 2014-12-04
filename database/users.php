@@ -13,5 +13,13 @@
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+	
+	function getUsernameById($params) {
+		$db = $params['db']; 
+		$stmt = $db->prepare('SELECT * FROM users WHERE id = :id');
+		$stmt->bindParam(':id', $params['id'], PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetch()['username'];
+	}
 
 ?>
