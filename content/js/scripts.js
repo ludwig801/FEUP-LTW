@@ -40,7 +40,7 @@ function addAnswer(answerDiv) {
 
 	if(num < 10) { // <-- max 10 answers per question
 	
-		var answerBlock = document.createElement('div');	
+		var answerBlock = document.createElement('div');
 		answerDiv.appendChild(answerBlock);
 		
 		$.get('templates/answer.php', '', function(data) {
@@ -153,6 +153,77 @@ function createAddQuestionBehaviour() {
 		addQuestion(questionsDiv);
 
 		return false;
+	});
+}
+
+function getDetails(questionID) {
+
+	console.log("id: " + questionID);
+
+	var detailsData = $.ajax({
+		type : "GET",
+		url : "templates/details.php",
+		data : "id=" + questionID,
+		success: function (response) {
+			var pollData = jQuery.parseJSON(response);
+			
+			//console.log(response);
+			
+			$(".details-title").html("" + pollData['poll']['description']);
+			
+			console.log(pollData['poll']);
+			
+			var detailsBody = $(".details-body").get(0);
+			$(detailsBody).html('');
+			
+			// Each Question
+			$.each(pollData['questions'], function(index, question) {
+			
+				var panelDiv = document.createElement('div');
+				panelDiv.className = 'panel panel-primary';
+				
+				var questionHeading = document.createElement('div');
+				questionHeading.className = 'panel-heading';
+				
+				var questionTitle = document.createElement('div');
+				questionTitle.className = 'panel-title';
+				
+				questionTitle.innerHTML = question['description'];
+				
+				console.log(question);
+				
+				questionHeading.appendChild(questionTitle);
+				panelDiv.appendChild(questionHeading);
+				
+				var answersBody = document.createElement('div');
+				answersBody.className = 'panel-body';
+				
+				var answersList = document.createElement('ul');
+				answersList.className = 'list-group';
+				
+				//console.log(pollData['answers']['3']);
+					
+				// Each answer within each question
+				$.each(pollData['answers'][question['id']], function(questionIndex, answer) {
+				
+					console.log(answer);
+				
+					var answerItem = document.createElement('li');
+					answerItem.className = 'list-group-item';
+					
+					answerItem.innerHTML = answer['description'];
+					
+					answersList.appendChild(answerItem);
+					answersList.appendChild(document.createElement('p'));
+				});
+				
+				answersBody.appendChild(answersList);
+				
+				panelDiv.appendChild(answersBody);
+				
+				detailsBody.appendChild(panelDiv);
+			});
+		}
 	});
 }
 

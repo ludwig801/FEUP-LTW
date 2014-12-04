@@ -17,6 +17,22 @@
 	<div class="panel-heading">
 		<div class="panel-title">My Polls</div>
 	</div>
+
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title details-title" id="myModalLabel"></h4>
+		  </div>
+		  <div class="modal-body details-body">
+		  </div>
+		  <div class="modal-footer details-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
 	
 	<div class="panel-body">
 	
@@ -42,8 +58,8 @@
 						else echo '<span style="color: red;" class="glyphicon glyphicon-remove" aria-hidden="true"></span>';?>
 					</td>
 					<td><?=$row['number_of_answers']?></td>
-					<td><a href="poll_view_answers.php?id=<?=$row['id']?>">
-						<span style="color: blue;" class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+					<td><a href="javascript: getDetails(<?=$row['id']?>)">
+						<span style="color: blue;" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></span>
 					</a></td>
 					<td><a href="edit_poll.php?id=<?=$row['id']?>">
 						<span style="color: blue;" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
