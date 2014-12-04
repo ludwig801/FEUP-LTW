@@ -91,6 +91,10 @@ p.error {
 	color: red;
 }
 
+.answer-radio {
+	width: 2em;
+}
+
 /* Footer */
 footer {
 	background-color: grey;

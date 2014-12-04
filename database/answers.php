@@ -26,7 +26,7 @@
 		$db = $params['db'];
 		$stmt = $db->prepare('SELECT * FROM answers WHERE poll_id = :poll_id');
 		$stmt->bindParam(':poll_id', $params['id'], PDO::PARAM_STR);
-
+		
 		$stmt->execute();
 
 		$result = $stmt->fetchAll();
