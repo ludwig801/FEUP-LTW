@@ -40,7 +40,7 @@ function addAnswer(answerDiv) {
 
 	if(num < 10) { // <-- max 10 answers per question
 	
-		var answerBlock = document.createElement('div');	
+		var answerBlock = document.createElement('div');
 		answerDiv.appendChild(answerBlock);
 		
 		$.get('templates/answer.php', '', function(data) {
@@ -153,6 +153,63 @@ function createAddQuestionBehaviour() {
 		addQuestion(questionsDiv);
 
 		return false;
+	});
+}
+
+function getDetails(questionID) {
+
+	var detailsData = $.ajax({
+		type : "GET",
+		url : "templates/details.php",
+		data : "id=" + questionID,
+		success: function (response) {
+			var pollData = jQuery.parseJSON(response);
+			
+			//console.log(response);
+			
+			$(".details-title").html("" + pollData['poll']['description']);
+			
+			//console.log(pollData['poll']);
+			
+			var panelDiv = document.createElement('div');
+			panelDiv.className = 'panel panel-default';
+			
+			// Each Question
+			$.each(pollData['questions'], function(index, question) {
+				
+				var questionHeading = document.createElement('div');
+				questionHeading.className = 'panel-heading';
+				
+				var questionTitle = document.createElement('div');
+				questionTitle.className = 'panel-title';
+				
+				questionTitle.innerHTML = question['description'];
+				
+				//console.log(question);
+				
+				questionHeading.appendChild(questionTitle);
+				panelDiv.appendChild(questionHeading);
+				
+				var answersBody = document.createElement('div');
+				questionHeading.className = 'panel-body';
+				
+				var answersList = document.createElement('ul');
+				questionHeading.className = 'list-group';
+					
+				// Each answer within each question
+				$.each(pollData[index], function(questionIndex, answer) {
+					var questionHeading = document.createElement('ul');
+					questionHeading.className = 'list-group';
+				});
+				
+				panelDiv.appendChild(document.createElement('p'));
+
+			});
+			
+			var detailsBody = $(".details-body").get(0);
+			
+			detailsBody.appendChild(panelDiv);
+		}
 	});
 }
 
