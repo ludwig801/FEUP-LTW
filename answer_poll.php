@@ -10,15 +10,10 @@
 	include('templates/navbar.php');
 	
 	include('templates/validation/answer_poll_validation.php');
-
-	if(isset($_POST['answer']) && isset($_POST['id'])) {	
-		$params = ['db' => $db, 'user_id' => $_SESSION['myid'], 'poll_id' => $_POST['id'], 'answer_id' => $_POST['answer']];
-		addPollAnswer($params);
-		incrementNumberOfAnswers($params);
-		header("location: user.php");
-	}
 	
 	if(isset($_GET['id'])) {
+	
+		echo "ENTROU";
 
 		$params = ['db' => $db, 'user_id' => $_SESSION['myid'], 'id' => $_GET['id']];
 		$check = checkIfUserAnswered($params);
@@ -31,12 +26,11 @@
 		$result = getPollById($params);
 		$questions = getPollQuestions($params);
 	}	
+	
 ?>
 
 <form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
 	<?php include_once('templates/answer_poll.php'); ?>
-		
 </form>
 
 
