@@ -18,7 +18,7 @@
 		
 		$questionParams = array('db' => $db, 'question_id' => $question['id']);
 		
-		$answers['\'' . $question['id'] . '\''] = getQuestionAnswers($questionParams);
+		$answers[$question['id']] = getQuestionAnswers($questionParams);
 	}
 	
 	$pollData = array('poll' => $poll, 'questions' => $questions, 'answers' => $answers);
