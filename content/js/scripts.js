@@ -79,50 +79,6 @@ function addQuestion(questionsDiv) {
 	}
 }
 
-function addExistingQuestion(question, id) {
-
-	alert("entrou2");
-	
-	var num = getNumberOfElements(questionsDiv, 'DIV'); // <-- must be in capital letters
-	var questionsDiv = document.getElementById('questions');
-
-	var question = document.createElement('div');
-	questionsDiv.appendChild(question);
-	
-	$.get('template/question.php', '', function(data) {
-		question.innerHTML = "" + data;
-		
-		// Adds variable name and value to question description input.
-		var descriptionInputTag = getInputElement(questionBlock);
-		descriptionInputTag.name = 'question[' + num + ']';
-		descriptionInputTag.value = question;
-		descriptionInputTag.placeholder += num;
-		
-		// Adds variable name and value to question id hidden input.
-		var idInputTag = getInputElement(questionBlock);
-		idInputTag.name = 'questionID[' + num + ']';
-		idInputTag.value = id;
-		
-	}, 'html');
-	
-	return false;
-
-}
-
-function addExistingAnswer(answer, id) {
-
-	var answerDiv = document.getElementById('answers');
-
-	var paragraph = document.createElement('p');
-
-	paragraph.innerHTML += '<div class="answer-editor"> <div class="row"> <div class="col-lg-6"> <div class="input-group">\
-						<input type="text" class="form-control" name="answer[' + id + ']" value="' + answer + '" placeholder="Insert new answer..." required />\
-						<span class="input-group-addon"><a href="#" class="close delete-answer">&times;</a></span>\
-						</div> </div> </div> </div>';
-					
-	answerDiv.appendChild(paragraph);
-}
-
 // Shows a confirmation message that checks if the user really wants to delete a poll. 
 function confirmDelete(id) {
     var r = confirm("Are you sure?");
@@ -202,10 +158,8 @@ function createAddQuestionBehaviour() {
 
 $(window).load(function() {
 
-	createAnswerBehaviours();
-	
+	createAnswerBehaviours();	
 	createMinimizeBehaviourToQuestion();
-	
 	createAddQuestionBehaviour();
 	
 });

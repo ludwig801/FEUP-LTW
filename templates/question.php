@@ -16,8 +16,8 @@
 					<input class="form-control" id="inputDescription" type="text" placeholder="Insert the question..."
 							title="Description must contain between 3 and 20 characters, including upper/lowercase, numbers and '_' symbol"
 							pattern="\w?{3,20}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" 
-							name=<?php if(isset($questionID)) { echo 'question[' . $questionID . ']'; } ?>
-							value=<?php if(isset($questionDescription)) { echo $questionDescription; } ?> required autofocus/>
+							name="<?php if(isset($questionID)) { echo 'question[' . $questionNum . ']'; } ?>"
+							value="<?php if(isset($questionDescription)) { echo $questionDescription; } ?>" required autofocus/>
 				</div>
 			</div>
 		</div>
@@ -27,27 +27,28 @@
 		
 			<?php 
 			
-				$questParams = array('db' => $db, 'question_id' => $questionID);
-				$tempAns = getQuestionAnswers($questParams);
+				if(isset($_POST['question'])) {
 				
-				if(isset($tempAns)) {
-					if(sizeof($tempAns) > 0) {
-						$_POST['answer'] = $tempAns;
+					$questParams = array('db' => $db, 'question_id' => $questionID);
+					$tempAns = getQuestionAnswers($questParams);
+					
+					if(isset($tempAns)) {
+						if(sizeof($tempAns) > 0) {
+							$_POST['answer'] = $tempAns;
+						}
+					}
+					
+					if(isset($_POST['answer'])) {
+					
+						$answerNum = 0;
+						foreach($_POST['answer'] as $row) {  
+							$answerDescription = $row['description'];
+							include('templates/answer.php');
+							$answerNum++;
+						}
 					}
 				}
-				
-				if(isset($_POST['answer'])) {
-				
-					$answerNum = 0;
-					foreach($_POST['answer'] as $row) {  
-						$answerDescription = $row['description'];
-						$answerQuestionID = $row['question_id'];
-						include('templates/answer.php');
-						$answerNum++;
-					}
-
-				}
-				
+					
 			?>
 		</div>
 		

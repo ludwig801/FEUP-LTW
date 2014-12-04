@@ -57,11 +57,13 @@
 				
 				// Checks answers.
 				foreach($data['answer'] as $i => $row) {
-					if(empty($row[$i])) {
+					if(empty($row)) {
 						$errors[] = "The answers can't be empty.";
 					}
-					if(strlen($row[$i]) < 2) {
-						$errors[] = "Each answer must have more than 1 character.";
+					foreach($row as $ans) {
+						if(strlen($ans) < 2) {
+							$errors[] = "Each answer must have more than 1 character.";
+						}
 					}
 				}
 			

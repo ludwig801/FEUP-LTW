@@ -15,9 +15,12 @@
 	include('templates/header.php');
 	include('templates/navbar.php');
 	
-	include('templates/editor/create_poll_editor.php');
-	
-	include('templates/footer.php');
-
 ?>
+<form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
+	<?php include('templates/editor/create_poll_editor.php'); ?>
+</form>
+
+<?php include('templates/footer.php'); ?>
+
+
 
