@@ -47,14 +47,14 @@
 		
 			// Checks questions possible answers.
 			if(isset($data['answer'])) {
-		
+			
 				// Checks number of answers. 
 				foreach($data['answer'] as $row) {
 					if(sizeof($row) < 2) {
 						$errors[] = "All questions must have at least 2 answers.";
 					}
 				}
-				
+					
 				// Checks answers.
 				foreach($data['answer'] as $i => $row) {
 					if(empty($row)) {
@@ -66,8 +66,9 @@
 						}
 					}
 				}
-			
-			} 
+			} else {
+				$errors[] = "No questions found.";
+			}
 		}
 	
 		return $errors;

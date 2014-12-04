@@ -42,7 +42,13 @@
 					
 						$answerNum = 0;
 						foreach($_POST['answer'] as $row) {  
-							$answerDescription = $row['description'];
+						
+							if(isset($row['description'])) { 
+								$answerDescription = $row['description'];
+							} else {
+								$answerDescription = $row[$questionNum][$answerNum];
+							}
+							
 							include('templates/answer.php');
 							$answerNum++;
 						}
