@@ -72,4 +72,12 @@
 	
 		return $errors;
 	}
+	
+	function validatePollAnswerData($data) {
+	
+		$errors = array();
+		
+		
+	}
+	
 ?>
