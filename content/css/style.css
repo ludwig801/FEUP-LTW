@@ -79,10 +79,10 @@ body {
 
 /* Search box */
 #hsearch  {
-    background:transparent url("../images/search.png") no-repeat scroll left center;
-    margin:0;
+    /* background:transparent url("../images/search.png") no-repeat scroll left center;
+    margin:0; */
     max-width:230px;
-    padding-left:40px;
+   /*  padding-left:40px; */
 }
 
 /* Errors messages (paragraph) */

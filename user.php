@@ -40,8 +40,8 @@
 	<div class="panel-heading">
 		<div class="panel-title">
 			<div class="dropdown">
-			  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-				:: <?= $title ?>
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+				<?= $title ?>
 				<span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
