@@ -66,12 +66,10 @@
 				
 				<!-- If there exists questions -->
 				<?php if(isset($_POST['question'])) {
-					$questionNum = 0;
 					foreach($_POST['question'] as $row) {  
 						$questionDescription = $row['description'];
 						$questionID = $row['id'];
 						include('templates/question.php');
-						$questionNum++;
 					}
 				} ?>
 				

@@ -16,12 +16,13 @@
 			$public = validateInput($_POST['public']);
 			
 			// Prepares params.
-			$params = ['db' => $db, 'id' => $_POST['id'], 'description' => $description, 'public' => $public, 'poll_id' => $_POST['poll_id'], 'answers' => $_POST['answers']];
+			$params = ['db' => $db, 'id' => $_POST['id'], 'description' => $description, 'public' => $public, 'poll_id' => $_POST['poll_id'], 
+				'questions' => $_POST['question'], 'answers' => $_POST['answers']];
 			
 			// Edits poll.
 			editPoll($pollParams);
-			deleteAllPollAnswers($params);
-			addAllAnswers($params);
+			deleteAllPollQuestions($params);
+			addQuestions($params);
 			
 			$_SESSION['message'] = "Poll successfully edited.";
 
