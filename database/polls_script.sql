@@ -17,6 +17,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users VALUES (NULL, "admin", "admin", "admin@master.com", "123");
+INSERT INTO users VALUES (NULL, "guest", "guest", "guest@master.com", "123");
 
 CREATE TABLE polls (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -48,7 +49,7 @@ CREATE TABLE poll_answers (
 );
 
 /* Insert new poll */
-
+/*
 INSERT INTO polls VALUES (NULL, 'Poll 1', 1, 1, '', 0, 0);
 INSERT INTO questions VALUES (NULL, 'Le question', 1);
 INSERT INTO answers VALUES (NULL, 'resposta simpatica', 1);
@@ -64,4 +65,4 @@ INSERT INTO poll_answers VALUES (NULL, 1, 2, 1);
 
 SELECT id FROM polls WHERE user_id = 1 INTERSECT SELECT poll_id FROM poll_answers WHERE user_id = 1;
 SELECT * FROM polls WHERE id IN (SELECT id FROM polls WHERE user_id = 1 INTERSECT SELECT poll_id FROM poll_answers WHERE user_id = 1);
-
+*/

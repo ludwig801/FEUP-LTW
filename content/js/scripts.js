@@ -167,11 +167,15 @@ function getDetails(questionID) {
 		success: function (response) {
 			var pollData = jQuery.parseJSON(response);
 			
+			//alert(response);
+			
 			//console.log(response);
 			
 			$(".details-title").html("" + pollData['poll']['description']);
 			
-			console.log(pollData['poll']);
+			$(".details-body").html("" + pollData['chart']);
+			
+			//console.log(pollData['poll']);
 			
 			var detailsBody = $(".details-body").get(0);
 			$(detailsBody).html('');
@@ -190,7 +194,7 @@ function getDetails(questionID) {
 				
 				questionTitle.innerHTML = question['description'];
 				
-				console.log(question);
+				//console.log(question);
 				
 				questionHeading.appendChild(questionTitle);
 				panelDiv.appendChild(questionHeading);
@@ -206,12 +210,30 @@ function getDetails(questionID) {
 				// Each answer within each question
 				$.each(pollData['answers'][question['id']], function(questionIndex, answer) {
 				
-					console.log(answer);
+					//console.log('answer: ' + answer['description']);
+					//console.log(pollData['poll_answers'][question['id']][answer['id']]);
 				
 					var answerItem = document.createElement('li');
 					answerItem.className = 'list-group-item';
 					
-					answerItem.innerHTML = answer['description'];
+					var answerData = document.createElement('div');
+					answerData.className = 'input-group';
+					
+					var numAnswers = document.createElement('span');
+					numAnswers.className = 'input-group-addon';
+					numAnswers.innerHTML = pollData['poll_answers'][question['id']][answer['id']];
+					
+					var answerDescr = document.createElement('input');
+					answerDescr.className = 'form-control disabled';
+					answerDescr.type = 'text';
+					answerDescr.value = answer['description'];
+					
+					answerData.appendChild(numAnswers);
+					answerData.appendChild(answerDescr);
+					
+					answerItem.appendChild(answerData);
+					
+					//answerItem.innerHTML = answer['description'];
 					
 					answersList.appendChild(answerItem);
 					answersList.appendChild(document.createElement('p'));
