@@ -12,46 +12,47 @@
 
 		<div class="panel-heading">
 			<div class="panel-title">
+				<a class="close" href="user.php">&times;</a>
 				<p>Welcome, <?=$_SESSION['myname']?>!<p/>
-				Here you can manage your account settings. Feel free to do so.
+				<p>Here you can manage your account settings. Feel free to do so.<p/>
+				
 			</div>
 		</div>
 		
 		<div class="panel-body">
-			
-			<input type="submit" value="Sign up" class="btn btn-lg btn-primary btn-block">
-			
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<div class="input-group">
-							<span class="input-group-addon">Username</span>
-							<input type="text" class="form-control" value="<?=$_SESSION['myname']?>" disabled required><!-- Very important! -->
-						</div>
-						<p/>
-						
-						<div class="input-group">
-							<span class="input-group-addon">Name</span>
-							<input type="none" class="form-control" value="<?=$_SESSION['myname']?>" placeholder="Insert your name..." required>
-						</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="input-group">
+						<span class="input-group-addon">Username</span>
+						<input type="text" class="form-control" value="<?=$_SESSION['myname']?>" disabled required><!-- Very important! -->
 					</div>
+					<p/>
 					
-					<div class="panel-body">
-						<div class="input-group">
-							<span class="input-group-addon">Email</span>
-							<input type="email" class="form-control" value="<?=$_SESSION['myemail']?>" placeholder="Insert your email..." required>
-						</div>
+					<div class="input-group">
+						<span class="input-group-addon">Name</span>
+						<input type="none" class="form-control" value="<?=$_SESSION['myname']?>" placeholder="Insert your name..." required>
 					</div>
+					<p/>
 					
-					<div class="panel-footer">
-						<!-- Submit -->
-						<a href="user_page.php" type="button" value="Delete Account" class="btn btn-danger" title="delete my account">
-							<span style="color:white" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-							Delete My Account
-							<span style="color:white" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-						</a>
+					<div class="input-group">
+						<span class="input-group-addon">Email</span>
+						<input type="email" class="form-control" value="<?=$_SESSION['myemail']?>" placeholder="Insert your email..." required>
 					</div>
-					
 				</div>
+				
+				<div class="panel-body"></div>
+				
+				<div class="panel-footer">
+					<!-- Submit -->
+					<a href="user_page.php" type="button" value="Delete Account" class="btn btn-danger" title="delete my account">
+						<span style="color:white" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						Delete My Account
+						<span style="color:white" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					</a>
+				</div>
+				
+			</div>
 			
 		</div>
 		

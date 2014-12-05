@@ -81,13 +81,17 @@
 				<th></th>
 				<th></th>
 				<th></th>
+				<th></th>
+				<th></th>
 			</tr>
-			<tr><td colspan="6"></td></tr>
+			<tr><td colspan="8"></td></tr>
 			
 			<?php foreach($result as $row) { ?>
 			
 				<tr>
-					<td><?=$row['description']?></td>
+					<td>
+						<?=$row['description']?>
+					</td>
 					<td>
 						<?php
 							$paramsUser = array('db' => $db, 'id' => $row['user_id']);
@@ -97,21 +101,27 @@
 					</td>
 					<td>
 						<?php if($row['public'] == 1)
-						echo '<span style="color: green;" class="glyphicon glyphicon-ok" aria-hidden="true"></span>';
-						else echo '<span style="color: red;" class="glyphicon glyphicon-remove" aria-hidden="true"></span>';?>
+						echo '<span style="color: green" class="glyphicon glyphicon-ok" aria-hidden="true"></span>';
+						else echo '<span style="color: red" class="glyphicon glyphicon-remove" aria-hidden="true"></span>';?>
 					</td>
 					<td>
 						<?=$row['number_of_answers']?>
 						<!--<span class="badge">42</span>-->
 					</td>
-					<td><a href="javascript: getDetails(<?=$row['id']?>)">
-						<span style="color: blue;" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></span>
+					<td><a href="javascript: sharePoll(<?=$row['id']?>);" title="Share this poll">
+						<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true"></span>
 					</a></td>
-					<td><a href="edit_poll.php?id=<?=$row['id']?>">
-						<span style="color: blue;" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+					<td><a href="javascript: getDetails(<?=$row['id']?>)" title="View Details">
+						<span style="color: blue" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></span>
 					</a></td>
-					<td><a href="javascript: confirmDelete(<?=$row['id']?>);">
-						<span style="color: red;" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					<td><a href="javascript: viewStats(<?=$row['id']?>)" title="View Poll Statistics">
+						<span style="color: blue" class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+					</a></td>
+					<td><a href="edit_poll.php?id=<?=$row['id']?>" title="Edit Poll">
+						<span style="color: blue" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+					</a></td>
+					<td><a href="javascript: confirmDelete(<?=$row['id']?>)" title="Delete Poll">
+						<span style="color: red" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</a></td>
 				</tr>
 							

@@ -10,7 +10,7 @@
 				} else {
 					echo 'Create Poll';
 				} ?>
-			<a class="close" href="user.php">&times</a>
+			<a class="close" href="user.php">&times;</a>
 		</div>
 		<p/>
 		
