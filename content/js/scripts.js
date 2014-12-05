@@ -158,7 +158,7 @@ function createAddQuestionBehaviour() {
 
 function getDetails(questionID) {
 
-	console.log("id: " + questionID);
+	//console.log("id: " + questionID);
 
 	var detailsData = $.ajax({
 		type : "GET",

@@ -59,7 +59,8 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<!-- Stats Modal -->
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -119,7 +120,7 @@
 						<?=$row['number_of_answers']?>
 					</td>
 					<!-- SHARE POLL -->
-					<td><a href="javascript: sharePoll(<?=$row['id']?>)" title="Share this poll">
+					<td><a href="share_poll.php?id=<?=$row['id']?>" title="Share this poll">
 						<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true"></span>
 					</a></td>
 					<!-- ANSWER POLL -->
