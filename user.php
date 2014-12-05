@@ -9,20 +9,23 @@
 	include('templates/header.php');
 	include('templates/navbar.php');
 	
-	$title = '';
+	$title = $filter = '';
 	$params = array('db' => $db, 'user_id' => $_SESSION['myid']);
 
 	if(isset($_GET['filter'])) {
-		if($_GET['filter'] == 'personal') {
+	
+		$filter = $_GET['filter'];
+		
+		if($filter == 'personal') {
 
 			$title = 'My Polls';
 			$result = getUserPolls($params);
-		} else if($_GET['filter'] == 'answered') {
+		} else if($filter == 'answered') {
 		
 			$title = 'Polls I Answered';
 			$result = getAnsweredPolls($params);
 			
-		} else if($_GET['filter'] == 'public') {
+		} else if($filter == 'public') {
 		
 			$title = 'Public Polls';
 			$result = getPublicPolls($db);
@@ -144,9 +147,15 @@
 						<span style="color: blue" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></span>
 					</a></td>
 					<!-- VIEW POLL STATISTICS -->
-					<td>
-						<a href="view_poll_detailed.php?id=<?=$row['id']?>"><span style="color: blue" class="glyphicon glyphicon-stats" aria-hidden="true"></span></a>
-					</td>
+					<?php if($row['number_of_answers'] > 0) { ?>
+						<td>
+							<a href="view_poll_detailed.php?id=<?=$row['id']?>&filter=<?=$filter?>"><span style="color: blue" title="Detailed view" class="glyphicon glyphicon-stats" aria-hidden="true"></span></a>
+						</td>
+					<?php } else {?>
+						<td>
+							<span style="color: black" title="Detailed view is unavailable since there are no answers" class="glyphicon glyphicon-stats" aria-hidden="true"></span></a>
+						</td>
+					<?php } ?>
 					<!-- EDIT POLL -->
 					<?php
 					if($username == $_SESSION['myname']) {
