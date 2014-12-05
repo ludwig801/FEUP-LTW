@@ -7,8 +7,6 @@
 	
 	$description = $public = "";
 	
-				include_once('upload.php');
-	
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 		
 		$errors = validatePollData($_POST);
