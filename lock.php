@@ -1,17 +1,16 @@
 <?php 
 	
 	include_once('database/connection.php');
+	include_once('database/users.php');
 
 	session_start();
 
 	$user_check = $_SESSION['myusername'];
-
-	$stmt = $db->prepare("SELECT username FROM users WHERE username = '$user_check'");
-	$stmt->execute();
-	$result = $stmt->fetchAll();
-
+	
+	$params = array('db' => $db, 'username' => $user_check);
+	$result = getUserByUsername($params);
 	$count = count($result);
-
+	
 	if($count != 1) {
 		header("location: signin.php");
 	} 
