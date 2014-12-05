@@ -10,6 +10,7 @@
 				} else {
 					echo 'Create Poll';
 				} ?>
+				
 			<a class="close" href="user.php">&times;</a>
 		</div>
 		<p/>
@@ -22,11 +23,14 @@
 						title="Title must contain between 3 and 20 characters, including upper/lowercase, numbers and '_' symbol"
 						pattern="\w?{3,20}" onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" required autofocus />
 		</div>
-		<p/>
-		<p/>
+		<br>
 		
+		<label>Image Upload</label>
+		<input type="file" style="color:white" value="Upload image" name="image" id="image" accept="gif,jpeg"/>
+		<br>
 
 		<!-- Choose poll privacy settings -->
+		<!--<label>Privacy Setting</label>-->
 		<div class="row">
 			<div class="col-lg-1">
 				<div class="input-group">
@@ -40,13 +44,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		
-		
-		<input type="file" name="image" id="image" />
-		
-		<p/>
-		<p/>
+		</div>	
+		<br>
 		
 		<!-- Add Question -->
 		<a href="javascript: addQuestion()"><input type="button"  value="Add Question" class="btn btn-default add-question"/></a>
