@@ -1,4 +1,5 @@
 <?php
+
 	function getAllPolls($params) {
 		$db = $params['db'];
 		$stmt = $db->prepare('SELECT * FROM polls WHERE user_id = :myid OR public = 1');
@@ -47,11 +48,12 @@
 	function addPoll($params) {
 		
 		$db = $params['db'];
-		$stmt = $db->prepare('INSERT INTO polls VALUES (NULL, :description, :public, :user_id, "", 0)');
+		$stmt = $db->prepare('INSERT INTO polls VALUES (NULL, :description, :public, :user_id, "", 0, :token)');
 		$stmt->bindParam(':description', $params['description'], PDO::PARAM_STR);
 		$stmt->bindParam(':public', $params['public'], PDO::PARAM_STR);
 		$stmt->bindParam(':user_id', $params['myid'], PDO::PARAM_STR);
-
+		$stmt->bindParam(':token', $params['token'], PDO::PARAM_STR);
+		
 		$stmt->execute();
 	}
 	

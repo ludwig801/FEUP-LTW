@@ -1,8 +1,10 @@
+/*
 DROP TABLE poll_answers;
 DROP TABLE answers;
 DROP TABLE questions;
 DROP TABLE polls;
 DROP TABLE users;
+*/
 
 pragma foreign_keys = true;
 
@@ -22,7 +24,8 @@ CREATE TABLE polls (
 	public INTEGER,
 	user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
 	image VARCHAR,
-	number_of_answers INTEGER
+	number_of_answers INTEGER,
+	token VARCHAR
 );
 
 CREATE TABLE questions (
@@ -45,7 +48,7 @@ CREATE TABLE poll_answers (
 );
 
 /* Insert new poll */
-
+/*
 INSERT INTO polls VALUES (NULL, 'Poll 1', 1, 1, '', 0);
 INSERT INTO questions VALUES (NULL, 'Le question', 1);
 INSERT INTO answers VALUES (NULL, 'resposta simpatica', 1);
@@ -55,3 +58,4 @@ INSERT INTO polls VALUES (NULL, 'Poll 2', 0, 1, '', 0);
 INSERT INTO questions VALUES (NULL, 'Le question', 2);
 INSERT INTO answers VALUES (NULL, 'resposta simpatica', 2);
 INSERT INTO answers VALUES (NULL, 'resposta nao tao simpatica', 2);
+*/
