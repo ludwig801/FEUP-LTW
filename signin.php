@@ -18,6 +18,7 @@
 			$_SESSION['myusername'] = $myusername;
 			$_SESSION['myid'] = $result['id'];
 			$_SESSION['myname'] = $result['name'];
+			$_SESSION['myemail'] = $result['email'];
 
 			// Redirect to user page
 			header("location: user.php");
@@ -28,22 +29,19 @@
 	}
 ?>
 
-	<form class="form-signin" role="form" method="POST" action="">
-		<fieldset>
-			<h2 class="form-signin-heading"> Welcome </h2>
-			
-			<label for="inputUser" class="sr-only">Username</label>
-			<input id="inputUser" type="text" placeholder="Username" name="username" class="form-control" required autofocus/>
-			<label for="inputPassword" class="sr-only">Password</label>
-			<input id="inputPassword" type="password" placeholder="Password" name="password" class="form-control" required />
+<form class="form-signin" role="form" method="POST" action="">
+	<fieldset>
+		<h2 class="form-signin-heading"> Welcome </h2>
+		
+		<label for="inputUser" class="sr-only">Username</label>
+		<input id="inputUser" type="text" placeholder="Username" name="username" class="form-control" required autofocus/>
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input id="inputPassword" type="password" placeholder="Password" name="password" class="form-control" required />
 
-			<input type="submit" value="Sign in" class="btn btn-lg btn-primary btn-block"/>
-			<p>If you don't have an account, </p>
-			<a href="signup.php"><input type="button"  value="Sign up" class="btn btn-lg btn-primary btn-block"/></a>
-		</fieldset>
-	</form>
-
-
-
+		<input type="submit" value="Sign in" class="btn btn-lg btn-primary btn-block"/>
+		<p>If you don't have an account, </p>
+		<a href="signup.php"><input type="button"  value="Sign up" class="btn btn-lg btn-primary btn-block"/></a>
+	</fieldset>
+</form>
 
 <?php include('templates/footer.php'); ?>

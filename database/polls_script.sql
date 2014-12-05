@@ -14,7 +14,7 @@ CREATE TABLE users (
 	password VARCHAR
 );
 
-INSERT INTO users VALUES (NULL, "admin", "admin", "admin", "123");
+INSERT INTO users VALUES (NULL, "admin", "admin", "admin@master.com", "123");
 
 CREATE TABLE polls (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
