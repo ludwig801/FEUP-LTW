@@ -31,7 +31,10 @@
 			$_SESSION['message'] = "Poll successfully created.";
 
 			header("location: user.php");
-		} 
+		}
+		else {
+			header("location: signin.php");
+		}
 	}
 
 ?>

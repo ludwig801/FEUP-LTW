@@ -71,8 +71,9 @@
 	
 	<div class="panel-body">
 	
-		<table class="table">
+		<?php if(sizeof($result) > 0) { ?>
 			
+		<table class="table">
 			<tr>
 				<th>Title</th>
 				<th>Owner</th>
@@ -125,8 +126,16 @@
 				</tr>
 							
 			<?php 	} ?>
-		
+			
 		</table>
+			
+		<?php } else { ?>
+		<ul class="list-group">
+			<li class="list-group-item">There are no polls</li>
+		</ul>
+		<?php } ?> 
+		
+		
 	
 	</div>
 	
