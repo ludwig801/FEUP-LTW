@@ -79,5 +79,13 @@
 		$stmt->bindParam(':id', $params['poll_id'], PDO::PARAM_STR);
 		$stmt->execute();
 	}
+	
+	function getPollByToken($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('SELECT * FROM polls WHERE token = :token');
+		$stmt->bindParam(':token', $params['token'], PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetch();
+	}
 
 ?>
