@@ -11,8 +11,8 @@
 	
 	$title = $filter = '';
 	$params = array('db' => $db, 'user_id' => $_SESSION['myid']);
-	
-	if(isset($_GET['query'])) {
+
+	if(isset($_GET['query']) && (strlen($_GET['query']) > 0)) {
 		$params['query'] = explode(" ", $_GET['query']);
 		$title = 'Search Results';
 		$result = getSearchResults($params);
@@ -67,13 +67,30 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal fade bs-token-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title token-title" id="tokenModal"><b>Poll Token</b></h4>
+			<p>Any registered user with access to this token can answer this poll <b>(even if the poll is private!)</b></p>
+		  </div>
+		  <div class="modal-body token-body">
+		  </div>
+		  <div class="modal-footer token-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">Back</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
 
-	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade bs-details-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg">
 		<div class="modal-content">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-			<h4 class="modal-title details-title" id="myModalLabel"></h4>
+			<h4 class="modal-title details-title" id="detailsModal"></h4>
 		  </div>
 		  <div class="modal-body details-body">
 		  </div>
@@ -129,9 +146,9 @@
 					<!-- SHARE POLL -->
 					<?php 
 						if($username == $_SESSION['myname']) { ?>
-						<td><a href="share_poll.php?id=<?=$row['id']?>" title="Share this poll">
-							<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true"></span>
-						</a></td>
+							<td><a href="javascript: getToken('<?=$row['token']?>')" title="Get Poll Token">
+								<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true" data-toggle="modal" data-target=".bs-token-modal-lg"></span>
+							</a></td>
 					<?php } else { ?>
 						<td>
 							<span style="color: black" title="Sharing is not available for the current user" class="glyphicon glyphicon-share" aria-hidden="true"></span>
@@ -149,7 +166,7 @@
 					<?php } ?>
 					<!-- VIEW POLL DETAILS -->
 					<td><a href="javascript: getDetails(<?=$row['id']?>)" title="Short Info">
-						<span style="color: blue" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></span>
+						<span style="color: blue" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-details-modal-lg"></span>
 					</a></td>
 					<!-- VIEW POLL STATISTICS -->
 					<?php if($row['number_of_answers'] > 0) { ?>
