@@ -10,41 +10,56 @@
 	include('templates/navbar.php');
 	
 	$title = $filter = '';
-	$params = array('db' => $db, 'user_id' => $_SESSION['myid']);
+	$params = array('db' => $db);
 
-	if(isset($_GET['query']) && (strlen($_GET['query']) > 0)) {
-		$params['query'] = explode(" ", $_GET['query']);
-		$title = 'Search Results';
-		$result = getSearchResults($params);
-	}
-	else if(isset($_GET['filter'])) {
-	
-		$filter = $_GET['filter'];
-		
-		if($filter == 'personal') {
-
-			$title = 'My Polls';
-			$result = getUserPolls($params);
-		} else if($filter == 'answered') {
-		
-			$title = 'Polls I Answered';
-			$result = getAnsweredPolls($params);
-			
-		} else if($filter == 'public') {
-		
+	if(isset($_SESSION['guest'])) {
+		if(isset($_GET['query']) && (strlen($_GET['query']) > 0)) {
+			$params['query'] = explode(" ", $_GET['query']);
+			$title = 'Search Results';
+			$result = getPublicSearchResults($params);
+		}
+		else {
 			$title = 'Public Polls';
 			$result = getPublicPolls($db);
+		}
+	} else {
+	
+		$params['user_id'] = $_SESSION['myid'];
+	
+		if(isset($_GET['query']) && (strlen($_GET['query']) > 0)) {
+			$params['query'] = explode(" ", $_GET['query']);
+			$title = 'Search Results';
+			$result = getSearchResults($params);
+		}
+		else if(isset($_GET['filter'])) {
+		
+			$filter = $_GET['filter'];
+			
+			if($filter == 'personal') {
+
+				$title = 'My Polls';
+				$result = getUserPolls($params);
+			} else if($filter == 'answered') {
+			
+				$title = 'Polls I Answered';
+				$result = getAnsweredPolls($params);
+				
+			} else if($filter == 'public') {
+			
+				$title = 'Public Polls';
+				$result = getPublicPolls($db);
+			}
+			else {
+
+				$title = 'All Polls';
+				$result = getAllPolls($params);
+			}
 		}
 		else {
 
 			$title = 'All Polls';
 			$result = getAllPolls($params);
 		}
-	}
-	else {
-
-		$title = 'All Polls';
-		$result = getAllPolls($params);
 	}
 ?>
 
@@ -54,16 +69,20 @@
 	<div class="panel-heading">
 		<div class="panel-title">
 			<div class="dropdown">
-			  <button title="Filter polls" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-				<?= $title ?>
-				<span class="caret"></span>
-			  </button>
-			  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=all" <?php if($title == 'All Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >All Polls</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=answered" <?php if($title == 'Polls I Answered') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >Polls I Answered</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=public" <?php if($title == 'Public Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >Public Polls</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=personal" <?php if($title == 'My Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >My Polls</a></li>
-			  </ul>
+				<button title="Filter polls" class="btn btn-default dropdown-toggle <?php if(isset($_SESSION['guest'])) echo 'disabled';?>" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+					<?= $title ?>
+					<span class="caret"></span>
+				</button>
+				<?php if(!isset($_SESSION['guest'])) { ?>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=all" <?php if($title == 'All Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >All Polls</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=public" <?php if($title == 'Public Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >Public Polls</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=answered" <?php if($title == 'Polls I Answered') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >Polls I Answered</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=personal" <?php if($title == 'My Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >My Polls</a></li>
+				
+				</ul>
+				<?php } ?>
 			</div>
 		</div>
 	</div>
@@ -136,16 +155,18 @@
 						?>
 					</td>
 					<td>
-						<?php if($row['public'] == 1)
-						echo '<span style="color: green" class="glyphicon glyphicon-ok" aria-hidden="true"></span>';
-						else echo '<span style="color: red" class="glyphicon glyphicon-remove" aria-hidden="true"></span>';?>
+						<?php if($row['public'] == 1) { ?>
+							<span style="color: green" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+						<?php } else { ?>
+							<span style="color: red" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+						<?php } ?>
 					</td>
 					<td>
 						<?=$row['number_of_answers']?>
 					</td>
 					<!-- SHARE POLL -->
 					<?php 
-						if($username == $_SESSION['myusername']) { ?>
+						if($username == $_SESSION['myusername'] || ($row['public'] == 1)) { ?>
 							<td><a href="javascript: getToken('<?=$row['token']?>')" title="Get Poll Token">
 								<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true" data-toggle="modal" data-target=".bs-token-modal-lg"></span>
 							</a></td>
@@ -155,7 +176,12 @@
 						</td>
 					<?php } ?>
 					<!-- ANSWER POLL -->
-					<?php if(($title == 'Polls I Answered') || checkIfUserAnswered(array('db' => $db, 'user_id' => $_SESSION['myid'], 'id' => $row['id']))) { ?>
+					<?php if(isset($_SESSION['guest'])) { ?>
+						<td>
+							<span style="color: black" title="Guests cannot answer polls" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</td>
+					<?php } else {
+						if(($title == 'Polls I Answered') || checkIfUserAnswered(array('db' => $db, 'user_id' => $_SESSION['myid'], 'id' => $row['id']))) { ?>
 						<td>
 							<span style="color: black" title="You have already answered this poll" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</td>
@@ -163,7 +189,7 @@
 						<td><a href="answer_poll.php?id=<?=$row['id']?>" title="Answer this poll">
 							<span style="color: green" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</a></td>
-					<?php } ?>
+					<?php } } ?>
 					<!-- VIEW POLL DETAILS -->
 					<td><a href="javascript: getDetails(<?=$row['id']?>)" title="Short Info">
 						<span style="color: blue" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-details-modal-lg"></span>
