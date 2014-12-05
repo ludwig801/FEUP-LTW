@@ -80,12 +80,23 @@
 		$stmt->execute();
 	}
 	
-	function getPollByToken($params) {
+	function getSearchResults($params) {
 		$db = $params['db'];
-		$stmt = $db->prepare('SELECT * FROM polls WHERE token = :token');
-		$stmt->bindParam(':token', $params['token'], PDO::PARAM_STR);
-		$stmt->execute();
-		return $stmt->fetch();
+		$queryStrings = $params['query'];
+		
+		$results = array();
+		
+		foreach($queryStrings as $str) {
+		
+			$searchStr = '%' . $str . '%';
+			$stmt = $db->prepare('SELECT * FROM polls WHERE description LIKE :query');
+			$stmt->bindParam(':query', $searchStr, PDO::PARAM_STR);
+			$stmt->execute();
+			
+			$results = $stmt->fetchAll();
+		}
+		
+		return $results;
 	}
 
 ?>

@@ -173,8 +173,6 @@ function getDetails(questionID) {
 			
 			$(".details-title").html("" + pollData['poll']['description']);
 			
-			$(".details-body").html("" + pollData['chart']);
-			
 			//console.log(pollData['poll']);
 			
 			var detailsBody = $(".details-body").get(0);
@@ -247,6 +245,34 @@ function getDetails(questionID) {
 			});
 		}
 	});
+}
+
+function getToken(token) {
+
+	var tokenBody = $(".token-body").get(0);
+	$(tokenBody).html('');
+	//console.log(tokenBody);
+	
+	var inputGroup = document.createElement('div');
+	inputGroup.className = 'input-group';
+	
+	var inputAddon = document.createElement('span');
+	inputAddon.className = 'input-group-addon';
+	inputAddon.innerHTML = 'TOKEN';
+	
+	var inputToken = document.createElement('input');
+	inputToken.type = 'text';
+	inputToken.className = 'form-control';
+	inputToken.value = token;
+	inputToken.id = 'token';
+	inputToken.style = 'text-align:center';
+	inputToken.setAttribute('onclick','javascript: $("#token").select()');
+	inputToken.readOnly = true;
+	
+	inputGroup.appendChild(inputAddon);
+	inputGroup.appendChild(inputToken);
+	
+	tokenBody.appendChild(inputGroup);
 }
 
 $(window).load(function() {
