@@ -4,7 +4,6 @@
 		foreach($params['answers'] as $i => $row) {
 			if($i == $params['question_num']) {
 				foreach($row as $ans) {
-					echo $ans;
 					$ansParams = array('db' => $params['db'], 'description' => $ans, 'question_id' => $params['question_id']);
 					addAnswer($ansParams);
 				}
