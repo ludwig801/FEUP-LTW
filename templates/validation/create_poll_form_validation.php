@@ -3,6 +3,7 @@
 	include_once("form_validation.php");
 	include_once('database/questions.php');
 	include_once('database/answers.php');
+	include_once('templates/token.php');
 	
 	$description = $public = "";
 	
@@ -15,9 +16,11 @@
 		
 			$description = validateInput($_POST['pollTitle']);
 			$public = validateInput($_POST['public']);
+			$token = newToken(6);
 			
-			$params = array('db' => $db, 'description' => $description, 'public' => $public, 'myid' => $_SESSION['myid'],  'questions' => $_POST['question'], 'answers' => $_POST['answer']);
-			print_r($params);
+			$params = array('db' => $db, 'description' => $description, 'public' => $public, 'myid' => $_SESSION['myid'],  'questions' => $_POST['question'], 'answers' => $_POST['answer'], 
+								'token' => $token);
+
 			addPoll($params);
 			
 			$poll_id = getLastPollId($db);
