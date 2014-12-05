@@ -42,6 +42,9 @@
 			</div>
 		</div>
 		
+		
+		<input type="file" name="image" id="image" />
+		
 		<p/>
 		<p/>
 		
