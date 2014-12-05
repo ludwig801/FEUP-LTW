@@ -9,20 +9,23 @@
 	include('templates/header.php');
 	include('templates/navbar.php');
 	
-	$title = '';
+	$title = $filter = '';
 	$params = array('db' => $db, 'user_id' => $_SESSION['myid']);
 
 	if(isset($_GET['filter'])) {
-		if($_GET['filter'] == 'personal') {
+	
+		$filter = $_GET['filter'];
+		
+		if($filter == 'personal') {
 
 			$title = 'My Polls';
 			$result = getUserPolls($params);
-		} else if($_GET['filter'] == 'answered') {
+		} else if($filter == 'answered') {
 		
 			$title = 'Polls I Answered';
 			$result = getAnsweredPolls($params);
 			
-		} else if($_GET['filter'] == 'public') {
+		} else if($filter == 'public') {
 		
 			$title = 'Public Polls';
 			$result = getPublicPolls($db);
@@ -59,8 +62,7 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- Stats Modal -->
+
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -120,41 +122,65 @@
 						<?=$row['number_of_answers']?>
 					</td>
 					<!-- SHARE POLL -->
-					<td><a href="share_poll.php?id=<?=$row['id']?>" title="Share this poll">
-						<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true"></span>
-					</a></td>
+					<?php 
+						if($username == $_SESSION['myname']) { ?>
+						<td><a href="javascript: sharePoll(<?=$row['id']?>)" title="Share this poll">
+							<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true"></span>
+						</a></td>
+					<?php } else { ?>
+						<td>
+							<span style="color: black" title="Sharing is not available for the current user" class="glyphicon glyphicon-share" aria-hidden="true"></span>
+						</td>
+					<?php } ?>
 					<!-- ANSWER POLL -->
 					<?php if(($title == 'Polls I Answered') || checkIfUserAnswered(array('db' => $db, 'user_id' => $_SESSION['myid'], 'id' => $row['id']))) { ?>
 						<td>
-							<span style="color: black;" title="You have already answered this poll" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							<span style="color: black" title="You have already answered this poll" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</td>
 					<?php } else { ?>
 						<td><a href="answer_poll.php?id=<?=$row['id']?>" title="Answer this poll">
-							<span style="color: green;" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							<span style="color: green" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 						</a></td>
 					<?php } ?>
 					<!-- VIEW POLL DETAILS -->
-					<td><a href="javascript: getDetails(<?=$row['id']?>)" title="View Details">
+					<td><a href="javascript: getDetails(<?=$row['id']?>)" title="Short Info">
 						<span style="color: blue" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></span>
 					</a></td>
 					<!-- VIEW POLL STATISTICS -->
-					<td><a href="javascript: viewStats(<?=$row['id']?>)" title="View Poll Statistics">
-						<span style="color: blue" class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-					</a></td>
-					<!-- EDIT POLL -->
 					<?php if($row['number_of_answers'] > 0) { ?>
 						<td>
-							<span style="color: black" title="This poll has answers and can no longer be edited" class="glyphicon glyphicon-cog disabled" aria-hidden="true"></span>
+							<a href="view_poll_detailed.php?id=<?=$row['id']?>&filter=<?=$filter?>"><span style="color: blue" title="Detailed view" class="glyphicon glyphicon-stats" aria-hidden="true"></span></a>
 						</td>
-					<?php } else { ?>
-						<td><a href="edit_poll.php?id=<?=$row['id']?>" title="Edit Poll">
-							<span style="color: blue" class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-						</a></td>
+					<?php } else {?>
+						<td>
+							<span style="color: black" title="Detailed view is unavailable since there are no answers" class="glyphicon glyphicon-stats" aria-hidden="true"></span></a>
+						</td>
 					<?php } ?>
-					<!-- CELETE POLL -->
-					<td><a href="javascript: confirmDelete(<?=$row['id']?>)" title="Delete Poll">
-						<span style="color: red" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-					</a></td>
+					<!-- EDIT POLL -->
+					<?php
+					if($username == $_SESSION['myname']) {
+						if($row['number_of_answers'] > 0) { ?>
+							<td>
+								<span style="color: black" title="This poll has answers and can no longer be edited" class="glyphicon glyphicon-cog disabled" aria-hidden="true"></span>
+							</td>
+						<?php } else { ?>
+							<td><a href="edit_poll.php?id=<?=$row['id']?>" title="Edit Poll">
+								<span style="color: blue" class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+							</a></td>
+						<?php } ?>
+						<!-- DELETE POLL -->
+						<td><a href="javascript: confirmDelete(<?=$row['id']?>)" title="Delete Poll">
+							<span style="color: red" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</a></td>
+					<?php } else { ?>
+						<td>
+							<span style="color: black" title="Editing is not available for the current user" class="glyphicon glyphicon-cog disabled" aria-hidden="true"></span>
+						</td>
+						<td>
+							<span style="color: black" title="Deleting is not available for the current user" class="glyphicon glyphicon-trash disabled" aria-hidden="true"></span>
+						</td>
+					<?php } ?>
+					
 				</tr>
 							
 			<?php 	} ?>
