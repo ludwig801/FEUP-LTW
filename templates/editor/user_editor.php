@@ -39,15 +39,22 @@
 				</div>
 			</div>
 			
-			<div class="panel-body"></div>
-			
-			<div class="panel-footer">
-				<!-- Submit -->
+			<div class="panel-body">
+				<!-- Delete account -->
 				<a href="user_page.php" type="button" value="Delete Account" class="btn btn-danger" title="delete my account">
 					<span style="color:white" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					Delete My Account
 					<span style="color:white" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 				</a>
+			</div>
+			
+			<!-- Buttons -->
+			<div class="panel-footer">
+				<!-- Save -->
+				<input type="submit" value="Save Changes" class="btn btn-primary">
+				
+				<!-- Discard -->
+				<a href="user_page.php" type="button" value="Discard Changes" class="btn btn-default" title="Discard Changes">Discard Changes</a>
 			</div>
 			
 		</div>
@@ -56,11 +63,9 @@
 	
 	<!-- Buttons -->
 	<div class="panel-footer">
-		<!-- Save -->
-		<input type="submit" value="Save Changes" class="btn btn-lg btn-success">
-		
-		<!-- Discard -->
-		<a href="user.php" type="button" value="Discard Changes" class="btn btn-lg  btn-default" title="Discard Changes">Discard Changes</a>
+
+		<!-- Poll Page -->
+		<a href="user.php" type="button" value="Discard Changes" class="btn btn-default" title="Back">Back to Polls Page</a>
 	</div>
 
 </div>

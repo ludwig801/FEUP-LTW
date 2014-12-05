@@ -19,7 +19,7 @@
 			editUser($params);
 			
 			$_SESSION['message'] = "User profile successfully edited.";
-			header("location: user.php");
+			header("location: user_page.php");
 			
 		}
 	}
