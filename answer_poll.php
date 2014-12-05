@@ -13,8 +13,6 @@
 	
 	if(isset($_GET['id'])) {
 	
-		echo "ENTROU";
-
 		$params = ['db' => $db, 'user_id' => $_SESSION['myid'], 'id' => $_GET['id']];
 		$check = checkIfUserAnswered($params);
 
