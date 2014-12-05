@@ -45,6 +45,19 @@
 		}
 	}
 	
+	function checkUsername($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare("SELECT * FROM users WHERE username = :username");
+		$stmt->bindParam(':username', $params['username'], PDO::PARAM_STR);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		if(count($result) > 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
 	function deleteUser($params) {
 		$db = $params['db'];
 		$stmt = $db->prepare('DELETE FROM users WHERE username = :username');

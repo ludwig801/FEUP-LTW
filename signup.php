@@ -8,12 +8,13 @@
 	// If required field are filled
 	if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirmPassword'])) {
 	
+		$errors = array();
+	
 		if($_POST['password'] == $_POST['confirmPassword']) {
 		
 			$params = array('db' => $db, 'username' => $_POST['username']);
-			$tmpUsers = getUserByUsername($params);
 			
-			if(count($tmpUsers) == 0) {
+			if(checkUsername($params)) {
 			
 				$stmt = $db->prepare('INSERT INTO users VALUES (NULL, :username, :name, :email, :password)');
 				$stmt->bindParam(':username', $_POST['username'], PDO::PARAM_STR);
@@ -24,7 +25,13 @@
 				$stmt->execute();
 
 				header("location: signin.php");
+			
+			} else {
+			
+				$errors[] = "Username already taken. Choose another one.";
+				
 			}
+
 		} 
 	}
 
@@ -35,6 +42,8 @@
 	<a class="close" href="signin.php">&times;</a>
 	
 	<p>Create your personal account</p>
+	
+	<?php include_once('templates/show_errors.php'); ?>
 
 	<label for="inputUsername">Username</label>
 	<input id="inputUsername" type="text" placeholder="Pick a username..." name="username" class="form-control" required autofocus
