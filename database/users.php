@@ -21,5 +21,14 @@
 		$stmt->execute();
 		return $stmt->fetch()['username'];
 	}
+	
+	function editUser($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('UPDATE users SET name = :name, email = :email WHERE id = :id');
+		$stmt->bindParam(':id', $params['id'], PDO::PARAM_STR);
+		$stmt->bindParam(':name', $params['name'], PDO::PARAM_STR);
+		$stmt->bindParam(':email', $params['email'], PDO::PARAM_STR);
+		$stmt->execute();
+	}
 
 ?>

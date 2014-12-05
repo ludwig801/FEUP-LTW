@@ -1,13 +1,21 @@
 <?php
 
 	include('lock.php');
+	
+	include_once('database/connection.php');
+	
+	include_once('templates/validation/edit_user_validation.php');
+	
 	include('templates/header.php');
 	include('templates/navbar.php');
 	
 	$user_id = $_SESSION['myid'];
 	
 ?>
-<form method="POST" action="edit_user.php?id=<?= $user_id ?>">
+
+
+<form role="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
 	<div class="panel panel-primary">
 
 		<div class="panel-heading">
@@ -18,6 +26,17 @@
 				
 			</div>
 		</div>
+		
+		<input type="hidden" value="<?=$user_id?>" name="id" />
+		
+		<!-- Show errors -->
+		<?php 
+			if(isset($errors)) {
+				foreach($errors as $err) {
+					echo "<p class='error'> * $err </p>";
+				} 
+			}
+		?>
 		
 		<div class="panel-body">
 
@@ -31,13 +50,13 @@
 					
 					<div class="input-group">
 						<span class="input-group-addon">Name</span>
-						<input type="none" class="form-control" value="<?=$_SESSION['myname']?>" placeholder="Insert your name..." required>
+						<input type="none" class="form-control" value="<?=$_SESSION['myname']?>" placeholder="Insert your name..." name="name" required>
 					</div>
 					<p/>
 					
 					<div class="input-group">
 						<span class="input-group-addon">Email</span>
-						<input type="email" class="form-control" value="<?=$_SESSION['myemail']?>" placeholder="Insert your email..." required>
+						<input type="email" class="form-control" value="<?=$_SESSION['myemail']?>" placeholder="Insert your email..." name="email" required>
 					</div>
 				</div>
 				
