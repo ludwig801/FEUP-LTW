@@ -133,13 +133,13 @@
 						</a></td>
 					<?php } ?>
 					<!-- VIEW POLL DETAILS -->
-					<td><a href="javascript: getDetails(<?=$row['id']?>)" title="View Details">
+					<td><a href="javascript: getDetails(<?=$row['id']?>)" title="Short Info">
 						<span style="color: blue" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></span>
 					</a></td>
 					<!-- VIEW POLL STATISTICS -->
-					<td><a href="javascript: viewStats(<?=$row['id']?>)" title="View Poll Statistics">
-						<span style="color: blue" class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-					</a></td>
+					<td>
+						<a href="view_poll_detailed.php?id=<?=$row['id']?>"><span style="color: blue" class="glyphicon glyphicon-stats" aria-hidden="true"></span></a>
+					</td>
 					<!-- EDIT POLL -->
 					<?php if($row['number_of_answers'] > 0) { ?>
 						<td>

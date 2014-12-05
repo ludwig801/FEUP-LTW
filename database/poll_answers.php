@@ -36,6 +36,12 @@
 		if(count($result) > 0) return 1;
 		else return 0;
 	}
+	
+	function getNumberOfAnswers($params) {
+		$answers = getPollAnswerResults($params);
+
+		return count($answers);
+	}
 
 	function getAnsweredPolls($params) {
 		$db = $params['db'];
