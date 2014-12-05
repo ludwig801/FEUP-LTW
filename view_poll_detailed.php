@@ -19,6 +19,7 @@
 	$errors = validateDetailedView($params);
 	
 	if(sizeof($errors) > 0) {
+		$_SESSION['message'] = "Access denied.";
 		header("location: user.php");
 	}
 ?>

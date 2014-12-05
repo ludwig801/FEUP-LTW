@@ -124,7 +124,7 @@
 					<!-- SHARE POLL -->
 					<?php 
 						if($username == $_SESSION['myname']) { ?>
-						<td><a href="javascript: sharePoll(<?=$row['id']?>)" title="Share this poll">
+						<td><a href="share_poll.php?id=<?=$row['id']?>" title="Share this poll">
 							<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true"></span>
 						</a></td>
 					<?php } else { ?>

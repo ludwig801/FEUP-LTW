@@ -27,6 +27,10 @@
 		<input type="text" value="<?= $_SERVER['SERVER_NAME']; ?>/answer_poll.php?id=<?= $_GET['id'] ?>" onclick="this.select();" readonly style="width:300px;"/>
 	</div>
 	
+	<div class="panel-footer">
+		<a href="user.php" type="button" value="Back" class="btn btn-primary" title="Go Back">Back</a>
+	</div>
+	
 </div>
 
 
