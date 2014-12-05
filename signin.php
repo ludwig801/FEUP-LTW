@@ -39,6 +39,10 @@
 		<input id="inputPassword" type="password" placeholder="Password" name="password" class="form-control" required />
 
 		<input type="submit" value="Sign in" class="btn btn-lg btn-primary btn-block"/>
+		
+		<a href="signin_guest.php"><input type="button"  value="Sign in as guest" class="btn btn-lg btn-warning btn-block"/></a>
+		<br>
+		
 		<p>If you don't have an account, </p>
 		<a href="signup.php"><input type="button"  value="Sign up" class="btn btn-lg btn-primary btn-block"/></a>
 	</fieldset>
