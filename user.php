@@ -3,17 +3,25 @@
 	include_once('database/polls.php');
 	include_once('database/users.php');
 	include_once('database/answers.php');
+	include_once('database/poll_answers.php');
 
 	include('lock.php');
 	include('templates/header.php');
 	include('templates/navbar.php');
+	
+	$title = '';
+	$params = array('db' => $db, 'user_id' => $_SESSION['myid']);
 
 	if(isset($_GET['filter'])) {
 		if($_GET['filter'] == 'personal') {
-		
-			$params = array($db, $_SESSION['myid']);
+
 			$title = 'My Polls';
 			$result = getUserPolls($params);
+		} else if($_GET['filter'] == 'answered') {
+		
+			$title = 'Polls I Answered';
+			$result = getAnsweredPolls($params);
+			
 		} else if($_GET['filter'] == 'public') {
 		
 			$title = 'Public Polls';
@@ -21,14 +29,12 @@
 		}
 		else {
 
-			$params = array('db' => $db, 'id' => $_SESSION['myid']);
 			$title = 'All Polls';
 			$result = getAllPolls($params);
 		}
 	}
 	else {
 
-		$params = array('db' => $db, 'id' => $_SESSION['myid']);
 		$title = 'All Polls';
 		$result = getAllPolls($params);
 	}
@@ -40,12 +46,13 @@
 	<div class="panel-heading">
 		<div class="panel-title">
 			<div class="dropdown">
-			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+			  <button title="Filter polls" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 				<?= $title ?>
 				<span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=all" <?php if($title == 'All Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >All Polls</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=answered" <?php if($title == 'Polls I Answered') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >Polls I Answered</a></li>
 				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=public" <?php if($title == 'Public Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >Public Polls</a></li>
 				<li role="presentation"><a role="menuitem" tabindex="-1" href="user.php?filter=personal" <?php if($title == 'My Polls') echo 'style="color:green;"'; else echo 'style="color:grey;"'; ?> >My Polls</a></li>
 			  </ul>
@@ -86,14 +93,21 @@
 			<?php foreach($result as $row) { ?>
 			
 				<tr>
+					<!-- POLL TITLE -->
 					<td>
 						<?=$row['description']?>
 					</td>
+					<!-- POLL TITLE -->
 					<td>
 						<?php
 							$paramsUser = array('db' => $db, 'id' => $row['user_id']);
 							$username = getUsernameById($paramsUser);
-							echo $username;
+							if($username == $_SESSION['myname']) {
+								echo '<b>' . $username . '</b>';
+							}
+							else {
+								echo $username;
+							}
 						?>
 					</td>
 					<td>
@@ -103,23 +117,40 @@
 					</td>
 					<td>
 						<?=$row['number_of_answers']?>
-						<!--<span class="badge">42</span>-->
 					</td>
+					<!-- SHARE POLL -->
 					<td><a href="javascript: sharePoll(<?=$row['id']?>)" title="Share this poll">
 						<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true"></span>
 					</a></td>
-					<td><a href="answer_poll.php?id=<?=$row['id']?>" title="Answer this poll">
-						<span style="color: green;" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-					</a></td>
+					<!-- ANSWER POLL -->
+					<?php if(($title == 'Polls I Answered') || checkIfUserAnswered(array('db' => $db, 'user_id' => $_SESSION['myid'], 'id' => $row['id']))) { ?>
+						<td>
+							<span style="color: black;" title="You have already answered this poll" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</td>
+					<?php } else { ?>
+						<td><a href="answer_poll.php?id=<?=$row['id']?>" title="Answer this poll">
+							<span style="color: green;" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</a></td>
+					<?php } ?>
+					<!-- VIEW POLL DETAILS -->
 					<td><a href="javascript: getDetails(<?=$row['id']?>)" title="View Details">
 						<span style="color: blue" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></span>
 					</a></td>
+					<!-- VIEW POLL STATISTICS -->
 					<td><a href="javascript: viewStats(<?=$row['id']?>)" title="View Poll Statistics">
 						<span style="color: blue" class="glyphicon glyphicon-stats" aria-hidden="true"></span>
 					</a></td>
-					<td><a href="edit_poll.php?id=<?=$row['id']?>" title="Edit Poll">
-						<span style="color: blue" class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-					</a></td>
+					<!-- EDIT POLL -->
+					<?php if($row['number_of_answers'] > 0) { ?>
+						<td>
+							<span style="color: black" title="This poll has answers and can no longer be edited" class="glyphicon glyphicon-cog disabled" aria-hidden="true"></span>
+						</td>
+					<?php } else { ?>
+						<td><a href="edit_poll.php?id=<?=$row['id']?>" title="Edit Poll">
+							<span style="color: blue" class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+						</a></td>
+					<?php } ?>
+					<!-- CELETE POLL -->
 					<td><a href="javascript: confirmDelete(<?=$row['id']?>)" title="Delete Poll">
 						<span style="color: red" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</a></td>

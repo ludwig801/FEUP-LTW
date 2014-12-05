@@ -37,5 +37,13 @@
 		else return 0;
 	}
 
+	function getAnsweredPolls($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('SELECT * FROM polls WHERE id IN (SELECT poll_id FROM poll_answers WHERE user_id = :user_id)');
+		$stmt->bindParam(':user_id', $params['user_id'], PDO::PARAM_STR);
+		$stmt->execute();
+		
+		return $stmt->fetchAll();
+	}
 
 ?>

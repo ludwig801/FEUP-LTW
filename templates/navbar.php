@@ -35,12 +35,10 @@
 				<span class="sr-only">Toggle Dropdown</span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu">
-				<li><a href="user.php?filter=all">All Polls</a></li>
-				<!--<li><a href="#">Edit Poll</a></li>-->
-				<li class="divider"></li>
-				<li class="disabled"><a href="#">My Answered Polls</a></li>
-				<!--<li class="divider"></li>-->
-				<li><a href="user.php?filter=personal">My Polls</a></li>
+				<li><a href="user.php?filter=all">Polls Page</a></li>
+				<!--<li class="divider"></li>
+				<li><a href="user.php?filter=answered">Polls I Answered</a></li>
+				<li><a href="user.php?filter=personal">My Polls</a></li>-->
 				<li class="divider"></li>
 				<li><a href="user_page.php">Settings</a></li>
 				<li><a href="logout.php">Logout</a></li>
