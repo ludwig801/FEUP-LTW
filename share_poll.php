@@ -29,13 +29,23 @@
 	</div>
 	
 	<div class="panel-body">
-		<label>Token:</label><input type="text" value="<?= $poll['token'] ?>" onclick="this.select();" readonly style="width:300px; margin-left: 1em; text-align:center;"/>
-		
-		<a href="#">
-			<button type="button" class="btn btn-default">
-				Send via Email
-			</button>
-		</a>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-warning" onclick="javascript: $('#token').get(0).select();">
+							Select Token
+						</button>
+					</span>
+					<input type="text" class="form-control" id="token" value="<?= $poll['token'] ?>" style="text-align:center" readonly/>
+					<span class="input-group-btn">
+						<a href="#" class="btn btn-success">
+								Send via Email
+						</a>
+					</span>
+				</div>
+			</div>
+		</div>
 	</div>
 	
 	<div class="panel-footer">
