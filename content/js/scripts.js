@@ -49,7 +49,7 @@ function addAnswer(answerDiv) {
 			
 			var inputTag = getInputElement(answerBlock);
 			inputTag.name = 'answer[' + parentID + '][' + num + ']';
-			inputTag.placeholder += ' [' + parentID + '][' + num + ']';
+			//inputTag.placeholder += ' [' + parentID + '][' + num + ']';
 			
 		}, 'html');
 	}
@@ -69,7 +69,7 @@ function addQuestion(questionsDiv) {
 			// Adds variable name to input control.
 			var inputTag = getInputElement(questionBlock);
 			inputTag.name = 'question[' + num + ']';
-			inputTag.placeholder += num;
+			//inputTag.placeholder += num;
 			
 			// Adds two initial questions.
 			var answerDiv = firstTagChild(questionBlock, '#answers');

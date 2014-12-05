@@ -102,7 +102,13 @@
 			$stmt->bindParam(':query', $searchStr, PDO::PARAM_STR);
 			$stmt->execute();
 			
-			$results = $stmt->fetchAll();
+			$resQuery = $stmt->fetchAll();
+			
+			foreach($resQuery as $res) {
+				if(!in_array($res, $results)) {
+					$results[] = $res;
+				}
+			}
 		}
 		
 		return $results;
@@ -121,7 +127,13 @@
 			$stmt->bindParam(':query', $searchStr, PDO::PARAM_STR);
 			$stmt->execute();
 			
-			$results = $stmt->fetchAll();
+			$resQuery = $stmt->fetchAll();
+			
+			foreach($resQuery as $res) {
+				if(!in_array($res, $results)) {
+					$results[] = $res;
+				}
+			}
 		}
 		
 		return $results;
