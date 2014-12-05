@@ -52,15 +52,9 @@
 	</div>
 	
 	<div class="panel-body">
-		<!-- Show errors -->
-		<?php 
-			if(isset($errors)) {
-				foreach($errors as $err) {
-					echo "<p class='error'> * $err </p>";
-				} 
-			}
-		?>
-		
+	
+		<?php include('templates/show_errors.php'); ?>
+	
 		<div id="questions">
 			
 			<!-- If there exists questions -->
