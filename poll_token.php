@@ -42,13 +42,17 @@
 			<div class="row">
 				<div class="col-lg-4">
 					<div class="input-group">
-						<input type="text" class="form-control" id="token" name="token" style="text-align:center" maxlength="10"/>
+						<input type="text" class="form-control" id="token" name="token" placeholder="Insert Your Token" style="text-align:center" maxlength="10" required/>
 						<span class="input-group-btn">
 							<input type="submit" value="Confirm" name="submit" class="btn btn-success"/>
 						</span>
 					</div>
 				</div>
 			</div>
+		</div>
+		
+		<div class="panel-footer">
+			<a href="user.php" class="btn btn-primary">Back</a>
 		</div>
 	
 	</div>

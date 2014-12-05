@@ -11,6 +11,7 @@
 	function getPublicPolls($db) {
 		$stmt = $db->prepare('SELECT * FROM polls WHERE public = 1');
 		$stmt->execute();
+		
 		return $stmt->fetchAll();
 	}
 	
@@ -98,6 +99,25 @@
 		
 			$searchStr = '%' . $str . '%';
 			$stmt = $db->prepare('SELECT * FROM polls WHERE description LIKE :query');
+			$stmt->bindParam(':query', $searchStr, PDO::PARAM_STR);
+			$stmt->execute();
+			
+			$results = $stmt->fetchAll();
+		}
+		
+		return $results;
+	}
+	
+	function getPublicSearchResults($params) {
+		$db = $params['db'];
+		$queryStrings = $params['query'];
+		
+		$results = array();
+		
+		foreach($queryStrings as $str) {
+		
+			$searchStr = '%' . $str . '%';
+			$stmt = $db->prepare('SELECT * FROM polls WHERE public = 1 AND description LIKE :query');
 			$stmt->bindParam(':query', $searchStr, PDO::PARAM_STR);
 			$stmt->execute();
 			
