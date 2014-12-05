@@ -17,7 +17,7 @@
 				$result = glob ($target_dir);
 				
 				if(count($result) > 0) { ?>
-					<img src=<?=$result[0]?> />
+					<img src="<?=$result[0]?>" style="max-width:500px; max-height:500px; width:auto; height:auto;" />
 			<?php } ?>
 			
 			<?php foreach($questions as $row) {
