@@ -3,13 +3,23 @@
 	function validateDetailedView($params) {
 		$errors = array();
 		
-		$isUsersPoll = count(getUserPollById($params));
-		$hasAnsweredPoll = checkIfUserAnswered($params);
+		$owner = getPollByid($params)['user_id'];
 		
-		if(!$hasAnsweredPoll && !$isUsersPoll) {
-			$errors[] = "You have no access to this poll";
+		$isUsersPoll = ($owner == $_SESSION['myid']);
+		
+		if($isUsersPoll) {
+			return $errors;
 		}
-		
+		else {
+			$hasAnsweredPoll = checkIfUserAnswered($params);
+			if($hasAnsweredPoll) {
+				return $errors;
+			}
+			else {
+				$errors[] = "You have no access to this poll";
+			}
+		}
+
 		return $errors;
 	}
 ?>

@@ -13,14 +13,12 @@
 	
 	include_once('templates/validation/view_poll_detailed_validation.php');
 	
-	$params = array('db' => $db, 'poll_id' => $poll_id, 'user_id' => $_SESSION['myid']);
+	$params = array('db' => $db, 'poll_id' => $poll_id, 'id' => $poll_id, 'user_id' => $_SESSION['myid']);
 	
 	$errors = validateDetailedView($params);
 	
-	print_r($errors);
-	
 	if(sizeof($errors) > 0) {
-		//header("location: user.php");
+		header("location: user.php");
 	}
 	else {
 		$poll = getPollById($params);
