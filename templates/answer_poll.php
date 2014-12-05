@@ -11,6 +11,15 @@
 	</div>
 	
 	<div class="panel-body">
+	
+			<?php 
+				$target_dir = 'uploads/' . $_GET['id'] . '.*'; 
+				$result = glob ($target_dir);
+				
+				if(count($result) > 0) { ?>
+					<img src=<?=$result[0]?> />
+			<?php } ?>
+			
 			<?php foreach($questions as $row) {
 				echo '<div class="row">
 						<div class="col-lg-6">
