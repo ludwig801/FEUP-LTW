@@ -78,13 +78,9 @@
 				<th>Owner</th>
 				<th>Public</th>
 				<th>Answers</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
+				<th colspan="10"></th>
 			</tr>
-			<tr><td colspan="8"></td></tr>
+			<tr><td colspan="10"></td></tr>
 			
 			<?php foreach($result as $row) { ?>
 			
@@ -108,8 +104,11 @@
 						<?=$row['number_of_answers']?>
 						<!--<span class="badge">42</span>-->
 					</td>
-					<td><a href="javascript: sharePoll(<?=$row['id']?>);" title="Share this poll">
+					<td><a href="javascript: sharePoll(<?=$row['id']?>)" title="Share this poll">
 						<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true"></span>
+					</a></td>
+					<td><a href="answer_poll.php?id=<?=$row['id']?>" title="Answer this poll">
+						<span style="color: green;" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 					</a></td>
 					<td><a href="javascript: getDetails(<?=$row['id']?>)" title="View Details">
 						<span style="color: blue" class="glyphicon glyphicon-info-sign" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-lg"></span>
@@ -118,7 +117,7 @@
 						<span style="color: blue" class="glyphicon glyphicon-stats" aria-hidden="true"></span>
 					</a></td>
 					<td><a href="edit_poll.php?id=<?=$row['id']?>" title="Edit Poll">
-						<span style="color: blue" class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						<span style="color: blue" class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 					</a></td>
 					<td><a href="javascript: confirmDelete(<?=$row['id']?>)" title="Delete Poll">
 						<span style="color: red" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
