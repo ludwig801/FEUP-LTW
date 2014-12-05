@@ -2,6 +2,10 @@ body {
 	background-color: #eee;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 /* SIGN IN */
 .form-signin {
 	margin: auto;
