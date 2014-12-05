@@ -21,7 +21,7 @@
 		
 		<ul class="nav navbar-nav navbar-right">
 			
-			<form class="navbar-form navbar-left" method="GET" action="public_polls.php" role="search">
+			<form class="navbar-form navbar-left" method="GET" action="user.php" role="search">
 				<div class="form-group">
 					<input id="hsearch" type="text" class="form-control" placeholder="Search polls..." name="query">
 				</div>
