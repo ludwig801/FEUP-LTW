@@ -11,8 +11,13 @@
 	
 	$title = $filter = '';
 	$params = array('db' => $db, 'user_id' => $_SESSION['myid']);
-
-	if(isset($_GET['filter'])) {
+	
+	if(isset($_GET['query'])) {
+		$params['query'] = explode(" ", $_GET['query']);
+		$title = 'Search Results';
+		$result = getSearchResults($params);
+	}
+	else if(isset($_GET['filter'])) {
 	
 		$filter = $_GET['filter'];
 		
