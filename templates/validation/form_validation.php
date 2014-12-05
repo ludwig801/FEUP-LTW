@@ -102,4 +102,22 @@
 		
 	}
 	
+	function validateUserData($data) {
+		
+		$errors = array();
+		
+		if(!isset($data['name'])) {
+			$errors[] = "You must choose a name.";
+		} else if(strlen($data['name']) < 3) {
+			$errors[] = "Your name is too short";
+		}
+		
+		if(!isset($data['email'])) {
+			$errors[] = "You must choose an email.";
+		} else if(strlen($data['email']) < 3) {
+			$errors[] = "Your email is too short";
+		}
+		
+		return $errors;
+	}
 ?>
