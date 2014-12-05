@@ -30,5 +30,26 @@
 		$stmt->bindParam(':email', $params['email'], PDO::PARAM_STR);
 		$stmt->execute();
 	}
+	
+	function checkPassword($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare("SELECT * FROM users WHERE username = :username and password = :password");
+		$stmt->bindParam(':username', $params['username'], PDO::PARAM_STR);
+		$stmt->bindParam(':password', $params['password'], PDO::PARAM_STR);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		if(count($result) > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	function deleteUser($params) {
+		$db = $params['db'];
+		$stmt = $db->prepare('DELETE FROM users WHERE username = :username');
+		$stmt->bindParam(':username', $params['username'], PDO::PARAM_STR);
+		$stmt->execute();
+	}
 
 ?>

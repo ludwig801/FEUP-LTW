@@ -41,7 +41,7 @@
 			
 			<div class="panel-body">
 				<!-- Delete account -->
-				<a href="user_page.php" type="button" value="Delete Account" class="btn btn-danger" title="delete my account">
+				<a href="delete_user.php" type="button" value="Delete Account" class="btn btn-danger" title="delete my account">
 					<span style="color:white" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					Delete My Account
 					<span style="color:white" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
