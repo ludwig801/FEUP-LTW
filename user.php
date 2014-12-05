@@ -127,7 +127,7 @@
 						<?php
 							$paramsUser = array('db' => $db, 'id' => $row['user_id']);
 							$username = getUsernameById($paramsUser);
-							if($username == $_SESSION['myname']) {
+							if($username == $_SESSION['myusername']) {
 								echo '<b>' . $username . '</b>';
 							}
 							else {
@@ -145,7 +145,7 @@
 					</td>
 					<!-- SHARE POLL -->
 					<?php 
-						if($username == $_SESSION['myname']) { ?>
+						if($username == $_SESSION['myusername']) { ?>
 							<td><a href="javascript: getToken('<?=$row['token']?>')" title="Get Poll Token">
 								<span style="color: green" class="glyphicon glyphicon-share" aria-hidden="true" data-toggle="modal" data-target=".bs-token-modal-lg"></span>
 							</a></td>
@@ -180,7 +180,7 @@
 					<?php } ?>
 					<!-- EDIT POLL -->
 					<?php
-					if($username == $_SESSION['myname']) {
+					if($username == $_SESSION['myusername']) {
 						if($row['number_of_answers'] > 0) { ?>
 							<td>
 								<span style="color: black" title="This poll has answers and can no longer be edited" class="glyphicon glyphicon-cog disabled" aria-hidden="true"></span>
