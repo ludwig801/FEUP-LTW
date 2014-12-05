@@ -31,7 +31,7 @@
 	<div class="panel-body">
 		<label>Token:</label><input type="text" value="<?= $poll['token'] ?>" onclick="this.select();" readonly style="width:300px; margin-left: 1em; text-align:center;"/>
 		
-		<a href="#">
+		<a href="templates/send_email.php">
 			<button type="button" class="btn btn-default">
 				Send via Email
 			</button>
